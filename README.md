@@ -18,7 +18,8 @@
 **Programa Académico:** Maestría en Inteligencia Artificial, Educación e Investigación  
 **Institución:** Universidad Federico Henríquez y Carvajal (UFHEC)  
 **Curso:** Machine Learning  
-**Autoras:** Jeranny Antonia De Los Santos Concepción Jarolin Hernández Severido
+**Autoras:** Jeranny Antonia De Los Santos Concepción, Jarolin Hernández Severido
+
 **Repositorio GitHub:** [https://github.com/jerannydelossantosufhec-prog/Project_ML_PDRAE.git](https://github.com/jerannydelossantosufhec-prog/Project_ML_PDRAE.git)  
 **Aplicación en Streamlit Cloud:** [https://Project_ML_PDAE.streamlit.app](https://Project_ML_PDAE.streamlit.app)  
 **Landing Page (GitHub Pages):** [https://jerannydelossantosufhec-prog.github.io/Project_ML_PDRAE/](https://jerannydelossantosufhec-prog.github.io/Project_ML_PDRAE/)  
