@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Interactivo: PDAE - Machine Learning en Educación</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
+        .slide-container {
+            background: radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.2) 0%, transparent 45%),
+                        radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.15) 0%, transparent 45%),
+                        #0f172a;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white min-h-screen flex flex-col justify-between selection:bg-blue-600">
+
+    <!-- BARRA SUPERIOR -->
+    <header class="bg-slate-900/90 border-b border-slate-800 px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <a href="index.html" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center transition" title="Volver a la Landing Page">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <div>
+                <h1 class="text-base font-bold font-display text-white">Presentación Interactiva en Video • Skill latent-spaces/brag</h1>
+                <p class="text-xs text-slate-400">PDAE - Machine Learning en Educación | Jeranny Antonia De Los Santos C. (UFHEC)</p>
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-4">
+            <span id="badge_capitulo" class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-semibold border border-blue-500/30">
+                Capítulo 1 de 7
+            </span>
+            <button id="btn_audio_toggle" onclick="toggleAudio()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 border border-slate-700 flex items-center space-x-2 transition">
+                <i id="audio_icon" class="fa-solid fa-volume-high text-emerald-400"></i>
+                <span id="audio_text">Voz Activada</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ÁREA CENTRAL DE DIAPOSITIVA INTERACTIVA (PANTALLA DE VIDEO) -->
+    <main class="flex-1 flex items-center justify-center p-4 sm:p-8">
+        <div class="w-full max-w-5xl aspect-video rounded-3xl slide-container border border-slate-800 shadow-2xl p-8 sm:p-14 flex flex-col justify-between relative overflow-hidden">
+            
+            <!-- Encabezado de la diapositiva actual -->
+            <div class="flex justify-between items-start">
+                <div>
+                    <span id="slide_subtitle" class="text-xs font-bold uppercase tracking-wider text-blue-400">Fase 1: Introducción y Propósito</span>
+                    <h2 id="slide_title" class="text-2xl sm:text-4xl font-extrabold font-display text-white mt-1">Machine Learning Aplicado a la Educación</h2>
+                </div>
+                <div class="hidden sm:block">
+                    <span class="w-10 h-10 rounded-xl bg-slate-800/80 border border-slate-700 text-blue-400 flex items-center justify-center text-lg">
+                        <i id="slide_icon" class="fa-solid fa-graduation-cap"></i>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Contenido Visual / Gráfico Dinámico de la Diapositiva -->
+            <div id="slide_content" class="my-6">
+                <!-- Se inyecta dinámicamente con JavaScript -->
+            </div>
+
+            <!-- Subtítulo de Locución Sincronizada -->
+            <div class="bg-slate-900/85 backdrop-blur-md p-4 rounded-2xl border border-slate-800 text-slate-200 text-sm flex items-center space-x-3">
+                <i class="fa-solid fa-comment-dots text-blue-400 text-lg flex-shrink-0"></i>
+                <p id="narration_text" class="italic leading-relaxed">
+                    Bienvenidos a la presentación del proyecto final: Machine Learning Aplicado a la Educación.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- BARRA INFERIOR DE CONTROLES Y SELECTOR DE CAPÍTULOS -->
+    <footer class="bg-slate-900 border-t border-slate-800 px-6 py-4">
+        <div class="max-w-5xl mx-auto space-y-4">
+            
+            <!-- Barra de Progreso General -->
+            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden cursor-pointer" onclick="clickProgress(event)">
+                <div id="progress_bar" class="bg-gradient-to-r from-blue-500 to-emerald-400 h-2 transition-all duration-300" style="width: 14.28%;"></div>
+            </div>
+
+            <!-- Controles de Reproducción y Capítulos -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3">
+                    <button onclick="prevSlide()" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 flex items-center justify-center transition">
+                        <i class="fa-solid fa-backward-step"></i>
+                    </button>
+                    <button id="btn_play" onclick="togglePlay()" class="px-5 h-10 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold flex items-center space-x-2 transition shadow-lg shadow-blue-600/30">
+                        <i id="play_icon" class="fa-solid fa-pause"></i>
+                        <span id="play_text">Pausar</span>
+                    </button>
+                    <button onclick="nextSlide()" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 flex items-center justify-center transition">
+                        <i class="fa-solid fa-forward-step"></i>
+                    </button>
+                    <button onclick="restartVideo()" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition" title="Reiniciar">
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </button>
+                </div>
+
+                <!-- Selector Rápido de Capítulos -->
+                <div class="flex items-center space-x-1 overflow-x-auto max-w-full py-1 text-xs">
+                    <button onclick="goToSlide(0)" class="px-3 py-1.5 rounded-lg bg-blue-600/30 text-blue-300 font-semibold chap-btn">1. Intro</button>
+                    <button onclick="goToSlide(1)" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 font-semibold chap-btn">2. Reto</button>
+                    <button onclick="goToSlide(2)" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 font-semibold chap-btn">3. ETL</button>
+                    <button onclick="goToSlide(3)" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 font-semibold chap-btn">4. Random Forest</button>
+                    <button onclick="goToSlide(4)" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 font-semibold chap-btn">5. Keras</button>
+                    <button onclick="goToSlide(5)" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 font-semibold chap-btn">6. Simulador</button>
+                    <button onclick="goToSlide(6)" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 font-semibold chap-btn">7. Cierre</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DE CONTROL Y LOCUCIÓN EN ESPAÑOL -->
+    <script>
+        const slides = [
+            {
+                subtitle: "Presentación y Propósito • Maestría en IA",
+                title: "Machine Learning Aplicado a la Educación",
+                icon: "fa-graduation-cap",
+                narration: "Bienvenidos a la presentación del proyecto final: Machine Learning Aplicado a la Educación: Predicción de Deserción y Rendimiento Académico Estudiantil. Desarrollado en la Maestría en IA, Educación e Investigación de la Universidad Federico Henríquez y Carvajal por Jeranny Antonia De Los Santos Concepción. Hoy transformamos un problema educativo crítico en un prototipo analítico funcional de alerta temprana.",
+                html: `
+                    <div class="grid sm:grid-cols-3 gap-4 text-center mt-4">
+                        <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700">
+                            <i class="fa-solid fa-university text-3xl text-blue-400 mb-2"></i>
+                            <h4 class="font-bold text-white text-sm">Universidad UFHEC</h4>
+                            <p class="text-xs text-slate-400 mt-1">Maestría en IA y Educación</p>
+                        </div>
+                        <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700">
+                            <i class="fa-solid fa-code-branch text-3xl text-emerald-400 mb-2"></i>
+                            <h4 class="font-bold text-white text-sm">Random Forest + Keras</h4>
+                            <p class="text-xs text-slate-400 mt-1">Modelado Híbrido Multimodal</p>
+                        </div>
+                        <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700">
+                            <i class="fa-solid fa-cloud-arrow-up text-3xl text-purple-400 mb-2"></i>
+                            <h4 class="font-bold text-white text-sm">Streamlit Cloud</h4>
+                            <p class="text-xs text-slate-400 mt-1">Despliegue Interactivo</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                subtitle: "Diagnóstico del Problema Educativo",
+                title: "El Desafío Crítico de la Deserción Estudiantil",
+                icon: "fa-triangle-exclamation",
+                narration: "A nivel universitario, la deserción estudiantil genera graves pérdidas personales, sociales y económicas. Tradicionalmente, las instituciones identifican el abandono de forma reactiva, cuando el estudiante ya ha dejado de matricularse. Nuestro propósito es cambiar de paradigma: pasar de una analítica descriptiva tardía hacia un sistema predictivo y prescriptivo que detecte el riesgo en las primeras semanas del ciclo lectivo, permitiendo intervenciones pedagógicas oportunas.",
+                html: `
+                    <div class="grid sm:grid-cols-2 gap-6 mt-4">
+                        <div class="bg-red-500/10 border border-red-500/30 p-5 rounded-2xl">
+                            <h4 class="text-red-400 font-bold text-sm flex items-center gap-2"><i class="fa-solid fa-xmark"></i> Enfoque Reactivo Tradicional</h4>
+                            <p class="text-xs text-slate-300 mt-2">Detección al final del semestre tras la reprobación masiva. Sin tiempo para nivelación o ayuda psicológica.</p>
+                        </div>
+                        <div class="bg-emerald-500/10 border border-emerald-500/30 p-5 rounded-2xl">
+                            <h4 class="text-emerald-400 font-bold text-sm flex items-center gap-2"><i class="fa-solid fa-check"></i> Enfoque Predictivo PDAE</h4>
+                            <p class="text-xs text-slate-300 mt-2">Alerta Temprana (Semana 1-6). Tutoría preventiva personalizada y optimización de la permanencia.</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                subtitle: "Dataset Kaggle & Pipeline ETL",
+                title: "100,000 Registros y Prevención de Data Leakage",
+                icon: "fa-database",
+                narration: "Para este desarrollo empleamos el dataset abierto de Kaggle Student Academic Performance and Dropout Risk, compuesto por cien mil registros y 34 variables multifactoriales. Aplicamos un perfilado riguroso con YData Profiling y un pipeline ETL con prevención estricta de fuga de datos o Data Leakage: realizamos la partición estratificada antes de cualquier escalamiento. Las variables con mayor poder predictivo identificadas son el porcentaje de asistencia, las entregas vencidas, el promedio previo y los niveles de estrés.",
+                html: `
+                    <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 text-xs text-slate-300 space-y-3 mt-4">
+                        <div class="flex justify-between border-b border-slate-700 pb-2">
+                            <span>Fuente de Datos:</span>
+                            <strong class="text-white">KaggleHub (mohankrishnathalla/student-academic...)</strong>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-700 pb-2">
+                            <span>Control Anti-Leakage:</span>
+                            <strong class="text-emerald-400">train_test_split(stratify=y) ANTES de StandardScaler</strong>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Top Correlaciones:</span>
+                            <strong class="text-blue-400">Asistencia (-0.62) • Tareas Vencidas (+0.58) • Estrés (+0.43)</strong>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                subtitle: "Pestaña 1 de Streamlit • Modelo Supervisado",
+                title: "Random Forest Classifier: F1-Score 87.4%",
+                icon: "fa-tree",
+                narration: "En la primera pestaña de nuestra aplicación en Streamlit, ejecutamos el modelo entrenado en el cuaderno Project_ML_PDAE.ipynb. Implementamos un ensamble Random Forest de cien estimadores con balanceo de clases. El modelo alcanza un F1-Score del 87.4% y un Recall superior al 88.7% en la detección de deserción, minimizando los falsos negativos, que representan el error más costoso en el ámbito educativo.",
+                html: `
+                    <div class="grid grid-cols-4 gap-3 text-center mt-4">
+                        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                            <div class="text-2xl font-bold text-emerald-400">89.4%</div>
+                            <div class="text-[10px] text-slate-400 uppercase mt-1">Accuracy</div>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                            <div class="text-2xl font-bold text-blue-400">86.1%</div>
+                            <div class="text-[10px] text-slate-400 uppercase mt-1">Precision</div>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                            <div class="text-2xl font-bold text-amber-400">88.7%</div>
+                            <div class="text-[10px] text-slate-400 uppercase mt-1">Recall</div>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                            <div class="text-2xl font-bold text-purple-400">0.932</div>
+                            <div class="text-[10px] text-slate-400 uppercase mt-1">ROC-AUC</div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                subtitle: "Pestaña 2 de Streamlit • Deep Learning",
+                title: "Transfer Learning con Keras y MobileNetV2",
+                icon: "fa-brain",
+                narration: "En la segunda pestaña, llevamos la solución al siguiente nivel aplicando Transfer Learning con Keras. Aprovechamos la red convolucional profunda MobileNetV2, preentrenada en ImageNet, para extraer características visuales de atención, postura y engagement estudiantil en sesiones virtuales. El modelo clasifica el estado del alumno en tres categorías: Alto Rendimiento y Comprometido, Riesgo Moderado o Distraído, y Alto Riesgo o Deserción Inminente, integrando datos multimodales a la analítica universitaria.",
+                html: `
+                    <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 text-xs text-slate-300 mt-4 space-y-2">
+                        <p><strong>Directorio converted_keras/:</strong> Contiene <code>keras_model.h5</code> y <code>labels.txt</code>.</p>
+                        <div class="grid grid-cols-3 gap-2 pt-2 text-center font-bold">
+                            <div class="p-2 bg-emerald-500/20 text-emerald-300 rounded-lg">0. Comprometido</div>
+                            <div class="p-2 bg-amber-500/20 text-amber-300 rounded-lg">1. Distraído</div>
+                            <div class="p-2 bg-red-500/20 text-red-300 rounded-lg">2. Alto Riesgo</div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                subtitle: "Intervención Pedagógica en Vivo",
+                title: "Simulador Interactivo y Diagnóstico Prescriptivo",
+                icon: "fa-sliders",
+                narration: "El corazón del prototipo es su simulador interactivo. Cualquier tutor o consejero académico puede ingresar los parámetros de un estudiante y consultar el modelo en tiempo real. La plataforma no solo emite una probabilidad de riesgo con un semáforo visual, sino que genera recomendaciones prescriptivas concretas: sesiones de tutoría prioritaria, talleres de gestión del tiempo o apoyo psicopedagógico inmediato.",
+                html: `
+                    <div class="bg-gradient-to-r from-slate-900 to-slate-800 p-5 rounded-2xl border border-slate-700 mt-4 flex items-center justify-between">
+                        <div>
+                            <div class="text-xs uppercase font-bold text-slate-400">Alerta Generada por Semáforo</div>
+                            <div class="text-lg font-bold text-amber-400 mt-1">⚠️ Riesgo Medio (Probabilidad: 42.5%)</div>
+                            <p class="text-xs text-slate-300 mt-1">Plan: Citar a tutoría de refuerzo en asignaturas con tareas atrasadas.</p>
+                        </div>
+                        <div class="text-3xl font-extrabold text-blue-400 font-display">SAE 360°</div>
+                    </div>
+                `
+            },
+            {
+                subtitle: "Conclusiones y Despliegue en Producción",
+                title: "Innovación, Ética y Enlaces de Acceso",
+                icon: "fa-circle-check",
+                narration: "El proyecto se rige por principios de Inteligencia Artificial explicable y supervisión humana: el modelo aconseja, pero el educador decide. Los invitamos a explorar el código en GitHub, la landing page y el prototipo desplegado en Streamlit. Muchas gracias por su atención.",
+                html: `
+                    <div class="text-center space-y-3 mt-4">
+                        <p class="text-xs text-slate-300">Acceda a los recursos públicos del proyecto:</p>
+                        <div class="flex justify-center gap-3">
+                            <a href="https://Project_ML_PDAE.streamlit.app" target="_blank" class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-xs font-bold text-white transition">App en Streamlit</a>
+                            <a href="https://github.com/jerannydelossantosufhec-prog/Project_ML_PDRAE.git" target="_blank" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-200 border border-slate-700 transition">Repositorio GitHub</a>
+                            <a href="index.html" class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-xs font-bold text-white transition">Landing Page</a>
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        let currentIdx = 0;
+        let isPlaying = true;
+        let audioEnabled = true;
+        let synth = window.speechSynthesis;
+        let currentUtterance = null;
+
+        function renderSlide(idx) {
+            currentIdx = idx;
+            const slide = slides[idx];
+
+            document.getElementById('slide_subtitle').innerText = slide.subtitle;
+            document.getElementById('slide_title').innerText = slide.title;
+            document.getElementById('slide_icon').className = 'fa-solid ' + slide.icon;
+            document.getElementById('slide_content').innerHTML = slide.html;
+            document.getElementById('narration_text').innerText = slide.narration;
+            document.getElementById('badge_capitulo').innerText = `Capítulo ${idx + 1} de ${slides.length}`;
+
+            // Progreso
+            const pct = ((idx + 1) / slides.length) * 100;
+            document.getElementById('progress_bar').style.width = pct + '%';
+
+            // Actualizar botones de capítulo
+            const btns = document.querySelectorAll('.chap-btn');
+            btns.forEach((btn, bIdx) => {
+                if (bIdx === idx) {
+                    btn.className = 'px-3 py-1.5 rounded-lg bg-blue-600 text-white font-semibold chap-btn';
+                } else {
+                    btn.className = 'px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 font-semibold chap-btn';
+                }
+            });
+
+            // Hablar si audio está habilitado
+            speakNarration(slide.narration);
+        }
+
+        function speakNarration(text) {
+            if (!audioEnabled || !('speechSynthesis' in window)) return;
+            synth.cancel();
+
+            currentUtterance = new SpeechSynthesisUtterance(text);
+            currentUtterance.lang = 'es-ES';
+            currentUtterance.rate = 1.0;
+            currentUtterance.pitch = 1.0;
+
+            currentUtterance.onend = function() {
+                if (isPlaying && currentIdx < slides.length - 1) {
+                    setTimeout(() => {
+                        nextSlide();
+                    }, 1500);
+                }
+            };
+
+            synth.speak(currentUtterance);
+        }
+
+        function togglePlay() {
+            isPlaying = !isPlaying;
+            const playIcon = document.getElementById('play_icon');
+            const playText = document.getElementById('play_text');
+
+            if (isPlaying) {
+                playIcon.className = 'fa-solid fa-pause';
+                playText.innerText = 'Pausar';
+                synth.resume();
+                if (!synth.speaking) {
+                    speakNarration(slides[currentIdx].narration);
+                }
+            } else {
+                playIcon.className = 'fa-solid fa-play';
+                playText.innerText = 'Reanudar';
+                synth.pause();
+            }
+        }
+
+        function toggleAudio() {
+            audioEnabled = !audioEnabled;
+            const icon = document.getElementById('audio_icon');
+            const txt = document.getElementById('audio_text');
+
+            if (audioEnabled) {
+                icon.className = 'fa-solid fa-volume-high text-emerald-400';
+                txt.innerText = 'Voz Activada';
+                speakNarration(slides[currentIdx].narration);
+            } else {
+                icon.className = 'fa-solid fa-volume-xmark text-slate-500';
+                txt.innerText = 'Voz Silenciada';
+                synth.cancel();
+            }
+        }
+
+        function nextSlide() {
+            if (currentIdx < slides.length - 1) {
+                renderSlide(currentIdx + 1);
+            }
+        }
+
+        function prevSlide() {
+            if (currentIdx > 0) {
+                renderSlide(currentIdx - 1);
+            }
+        }
+
+        function goToSlide(idx) {
+            renderSlide(idx);
+        }
+
+        function restartVideo() {
+            renderSlide(0);
+        }
+
+        function clickProgress(e) {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const clickPos = (e.clientX - rect.left) / rect.width;
+            const targetIdx = Math.min(Math.floor(clickPos * slides.length), slides.length - 1);
+            renderSlide(targetIdx);
+        }
+
+        // Iniciar en la primera diapositiva
+        window.addEventListener('load', () => {
+            renderSlide(0);
+        });
+    </script>
+</body>
+</html>
+

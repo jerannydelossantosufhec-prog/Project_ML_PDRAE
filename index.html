@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDAE - Machine Learning Aplicado a la Educación | Predicción de Deserción y Rendimiento</title>
+    <meta name="description" content="Sistema de Alerta Temprana en Machine Learning y Transfer Learning para la Predicción de Deserción y Rendimiento Académico Estudiantil. Maestría en IA y Educación - UFHEC.">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif']
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                            navy: '#0b132b',
+                            dark: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.12) 0%, transparent 40%),
+                        #0b132b;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-blue-600 selection:text-white">
+
+    <!-- ====================================================================== -->
+    <!-- CAPA 1: NAVEGACIÓN Y PRESENTACIÓN INSTITUCIONAL -->
+    <!-- ====================================================================== -->
+    <nav class="fixed top-0 w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center space-x-3">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-blue-600 to-emerald-400 flex items-center justify-center text-white shadow-lg shadow-blue-500/20">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold font-display text-white tracking-tight">PDAE <span class="text-blue-400">ML</span></span>
+                        <p class="text-xs text-slate-400 hidden sm:block">Maestría en IA y Educación | UFHEC</p>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                    <a href="#proposito" class="hover:text-blue-400 transition-colors">Propósito</a>
+                    <a href="#crisp-ml" class="hover:text-blue-400 transition-colors">CRISP-ML(Q)</a>
+                    <a href="#datos-eda" class="hover:text-blue-400 transition-colors">Datos & EDA</a>
+                    <a href="#modelos" class="hover:text-blue-400 transition-colors">Modelos & Keras</a>
+                    <a href="#simulador" class="hover:text-blue-400 transition-colors">Simulador</a>
+                    <a href="#video" class="hover:text-blue-400 transition-colors">Video</a>
+                </div>
+
+                <div class="flex items-center space-x-3">
+                    <a href="https://github.com/jerannydelossantosufhec-prog/Project_ML_PDRAE.git" target="_blank" class="px-3.5 py-2 rounded-lg text-xs font-semibold bg-slate-800 text-slate-200 hover:bg-slate-700 border border-slate-700 transition flex items-center space-x-2">
+                        <i class="fa-brands fa-github text-base"></i>
+                        <span class="hidden sm:inline">GitHub</span>
+                    </a>
+                    <a href="https://Project_ML_PDAE.streamlit.app" target="_blank" class="px-4 py-2 rounded-lg text-xs font-bold bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:from-blue-500 hover:to-blue-400 shadow-md shadow-blue-600/30 transition flex items-center space-x-2">
+                        <i class="fa-solid fa-rocket"></i>
+                        <span>App Streamlit</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ====================================================================== -->
+    <!-- CAPA 2: HERO SECTION CON MÉTRICAS CLAVE -->
+    <!-- ====================================================================== -->
+    <header class="hero-gradient text-white pt-36 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center max-w-3xl mx-auto space-y-6">
+                <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-wider">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Prototipo Analítico Desplegado • Versión 2.0</span>
+                </div>
+                
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display tracking-tight text-white leading-tight">
+                    Machine Learning Aplicado a la <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-sky-300 to-emerald-400">Educación</span>
+                </h1>
+                
+                <p class="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed">
+                    Predicción de Deserción y Rendimiento Académico Estudiantil mediante modelos supervisados 
+                    <strong>Random Forest</strong> y <strong>Transfer Learning</strong> con Keras. Un Sistema de Alerta Temprana (SAE) basado en evidencia.
+                </p>
+
+                <div class="pt-4 flex flex-wrap justify-center gap-4">
+                    <a href="https://Project_ML_PDAE.streamlit.app" target="_blank" class="px-7 py-3.5 rounded-xl font-bold bg-blue-600 hover:bg-blue-500 text-white shadow-xl shadow-blue-600/30 transition flex items-center space-x-3 text-sm">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Abrir Simulador en Streamlit</span>
+                    </a>
+                    <a href="#simulador" class="px-7 py-3.5 rounded-xl font-bold bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center space-x-3 text-sm">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span>Probar Simulador Rápido</span>
+                    </a>
+                    <a href="https://github.com/jerannydelossantosufhec-prog/Project_ML_PDRAE.git" target="_blank" class="px-6 py-3.5 rounded-xl font-bold bg-slate-900/90 hover:bg-slate-800 text-slate-300 border border-slate-800 transition flex items-center space-x-2 text-sm">
+                        <i class="fa-brands fa-github"></i>
+                        <span>Ver Código Fuente</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Grilla de Métricas Destacadas -->
+            <div class="mt-20 grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div class="bg-slate-900/60 backdrop-blur-md p-5 rounded-2xl border border-slate-800 text-center">
+                    <div class="text-3xl font-extrabold text-blue-400 font-display">100k</div>
+                    <div class="text-xs text-slate-400 font-medium uppercase mt-1">Registros Kaggle</div>
+                </div>
+                <div class="bg-slate-900/60 backdrop-blur-md p-5 rounded-2xl border border-slate-800 text-center">
+                    <div class="text-3xl font-extrabold text-sky-400 font-display">34</div>
+                    <div class="text-xs text-slate-400 font-medium uppercase mt-1">Variables Analizadas</div>
+                </div>
+                <div class="bg-slate-900/60 backdrop-blur-md p-5 rounded-2xl border border-slate-800 text-center">
+                    <div class="text-3xl font-extrabold text-emerald-400 font-display">87.4%</div>
+                    <div class="text-xs text-slate-400 font-medium uppercase mt-1">F1-Score Modelo</div>
+                </div>
+                <div class="bg-slate-900/60 backdrop-blur-md p-5 rounded-2xl border border-slate-800 text-center">
+                    <div class="text-3xl font-extrabold text-amber-400 font-display">88.7%</div>
+                    <div class="text-xs text-slate-400 font-medium uppercase mt-1">Recall Deserción</div>
+                </div>
+                <div class="bg-slate-900/60 backdrop-blur-md p-5 rounded-2xl border border-slate-800 text-center col-span-2 md:col-span-1">
+                    <div class="text-3xl font-extrabold text-purple-400 font-display">0.932</div>
+                    <div class="text-xs text-slate-400 font-medium uppercase mt-1">ROC - AUC</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ====================================================================== -->
+    <!-- CAPA 3: PROPÓSITO E IMPACTO INSTITUCIONAL -->
+    <!-- ====================================================================== -->
+    <section id="proposito" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-xs uppercase font-bold text-blue-600 tracking-wider">El Reto de la Educación Superior</h2>
+            <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 font-display">De la Analítica Reactiva a la Intervención Pedagógica Preventiva</p>
+            <p class="text-slate-600 mt-4 text-base">La deserción estudiantil afecta hasta al 50% de las matrículas en los primeros ciclos. Este proyecto transforma datos históricos en un motor analítico funcional de alerta temprana.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="glass-card p-8 rounded-2xl shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl mb-6">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">Detección Precoz</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Identificación del riesgo de deserción antes de la semana 6 del semestre, anticipando dificultades antes de que se produzcan reprobaciones definitivas.
+                </p>
+            </div>
+
+            <div class="glass-card p-8 rounded-2xl shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-6">
+                    <i class="fa-solid fa-chart-pie"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">Enfoque Multimodal</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Integración de variables tabulares clásicas (promedio, asistencia, estrés, horas de sueño) con extracción de características visuales mediante Transfer Learning (Keras).
+                </p>
+            </div>
+
+            <div class="glass-card p-8 rounded-2xl shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl mb-6">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">Ética y Human-in-the-Loop</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Explicabilidad algorítmica (XAI), prevención de estigmatización y supervisión humana activa: el sistema sugiere alertas, el tutor toma las decisiones pedagógicas.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================================== -->
+    <!-- CAPA 4: METODOLOGÍA CRISP-ML(Q) -->
+    <!-- ====================================================================== -->
+    <section id="crisp-ml" class="py-24 bg-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs uppercase font-bold text-blue-400 tracking-wider">Metodología Estandarizada</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 font-display">Ciclo de Vida CRISP-ML(Q) con Calidad Garantizada</h2>
+                <p class="text-slate-400 mt-4 text-base">Estructura rigurosa en 6 fases iterativas, documentadas formalmente mediante Architecture Decision Records (ADRs).</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700/80">
+                    <div class="flex items-center space-x-3 text-blue-400 font-bold mb-3">
+                        <span class="w-7 h-7 rounded-lg bg-blue-500/20 flex items-center justify-center text-sm">1</span>
+                        <h4>Comprensión del Negocio</h4>
+                    </div>
+                    <p class="text-slate-300 text-sm">Definición del Sistema de Alerta Temprana (SAE). Priorización del Recall para minimizar los falsos negativos (estudiantes vulnerables no detectados).</p>
+                </div>
+
+                <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700/80">
+                    <div class="flex items-center space-x-3 text-sky-400 font-bold mb-3">
+                        <span class="w-7 h-7 rounded-lg bg-sky-500/20 flex items-center justify-center text-sm">2</span>
+                        <h4>Comprensión de Datos</h4>
+                    </div>
+                    <p class="text-slate-300 text-sm">Ingesta automatizada vía KaggleHub del dataset de 100,000 registros x 34 columnas. Perfilado exhaustivo con YData Profiling para calidad y nulos.</p>
+                </div>
+
+                <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700/80">
+                    <div class="flex items-center space-x-3 text-emerald-400 font-bold mb-3">
+                        <span class="w-7 h-7 rounded-lg bg-emerald-500/20 flex items-center justify-center text-sm">3</span>
+                        <h4>Preparación de Datos (ETL)</h4>
+                    </div>
+                    <p class="text-slate-300 text-sm">Protocolo Anti-Leakage: partición estratificada antes del escalado. Imputación estadística, Label Encoding y normalización de tensores visuales.</p>
+                </div>
+
+                <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700/80">
+                    <div class="flex items-center space-x-3 text-amber-400 font-bold mb-3">
+                        <span class="w-7 h-7 rounded-lg bg-amber-500/20 flex items-center justify-center text-sm">4</span>
+                        <h4>Modelado Híbrido</h4>
+                    </div>
+                    <p class="text-slate-300 text-sm">Entrenamiento de Random Forest Classifier (100 árboles) y Transfer Learning convolucional con MobileNetV2 (Keras) para compromiso visual.</p>
+                </div>
+
+                <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700/80">
+                    <div class="flex items-center space-x-3 text-purple-400 font-bold mb-3">
+                        <span class="w-7 h-7 rounded-lg bg-purple-500/20 flex items-center justify-center text-sm">5</span>
+                        <h4>Evaluación y XAI</h4>
+                    </div>
+                    <p class="text-slate-300 text-sm">F1-Score del 87.4%, Recall del 88.7% y AUC de 0.932. Cálculo de Feature Importance (Gini) para explicabilidad y auditoría de sesgos demográficos.</p>
+                </div>
+
+                <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700/80">
+                    <div class="flex items-center space-x-3 text-rose-400 font-bold mb-3">
+                        <span class="w-7 h-7 rounded-lg bg-rose-500/20 flex items-center justify-center text-sm">6</span>
+                        <h4>Despliegue y Monitoreo</h4>
+                    </div>
+                    <p class="text-slate-300 text-sm">Arquitectura dual: Landing Page en GitHub Pages y aplicación interactiva en Streamlit Community Cloud con simulador predictivo dinámico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================================== -->
+    <!-- CAPA 5: COMPARATIVA DE MODELOS (RANDOM FOREST VS TRANSFER LEARNING) -->
+    <!-- ====================================================================== -->
+    <section id="modelos" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs uppercase font-bold text-blue-600 tracking-wider">Arquitectura Dual</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 font-display">Comparativa Técnica: Tabular vs. Visión Multimodal</h2>
+            <p class="text-slate-600 mt-4 text-base">Dos pestañas analíticas en Streamlit que resuelven diferentes dimensiones del problema educativo.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+            <!-- Tarjeta Modelo 1 -->
+            <div class="glass-card p-8 rounded-2xl border-t-4 border-blue-600 flex flex-col justify-between shadow-sm">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold uppercase">Pestaña 1 • Notebook</span>
+                        <i class="fa-solid fa-tree text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Random Forest Classifier</h3>
+                    <p class="text-slate-600 text-sm mb-6">Modelo de ensamble supervisado entrenado sobre las 33 variables tabulares del dataset de Kaggle (Project_ML_PDAE.ipynb).</p>
+
+                    <ul class="space-y-3 text-sm text-slate-700 mb-8">
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-check text-emerald-500"></i>
+                            <span><strong>100 Árboles de Decisión</strong> con criterio de impureza Gini</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-check text-emerald-500"></i>
+                            <span><strong>Balanceo Automático:</strong> <code>class_weight='balanced'</code></span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-check text-emerald-500"></i>
+                            <span><strong>Explicabilidad Nativa:</strong> Feature Importance directo por factor</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-check text-emerald-500"></i>
+                            <span><strong>Latencia:</strong> Inferencia ultra rápida (<15 ms por estudiante)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="p-4 bg-slate-100 rounded-xl text-xs text-slate-600">
+                    <strong>Factores Clave Detectados:</strong> Asistencia (28.4%), Tareas vencidas (22.1%), Promedio anterior (17.8%), Estrés (11.2%).
+                </div>
+            </div>
+
+            <!-- Tarjeta Modelo 2 -->
+            <div class="glass-card p-8 rounded-2xl border-t-4 border-emerald-500 flex flex-col justify-between shadow-sm">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold uppercase">Pestaña 2 • converted_keras</span>
+                        <i class="fa-solid fa-brain text-2xl text-emerald-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Transfer Learning (Keras / MobileNet)</h3>
+                    <p class="text-slate-600 text-sm mb-6">Red convolucional profunda preentrenada en ImageNet que clasifica atención y compromiso visual en sesiones virtuales.</p>
+
+                    <ul class="space-y-3 text-sm text-slate-700 mb-8">
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-check text-emerald-500"></i>
+                            <span><strong>MobileNetV2:</strong> Pesos convolucionales base congelados</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-check text-emerald-500"></i>
+                            <span><strong>3 Clases de Salida:</strong> Comprometido, Distraído y Alto Riesgo</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-check text-emerald-500"></i>
+                            <span><strong>Entrada Normalizada:</strong> Tensores RGB de 224x224x3 en [-1, 1]</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-check text-emerald-500"></i>
+                            <span><strong>Artefactos:</strong> <code>keras_model.h5</code> y <code>labels.txt</code></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="p-4 bg-slate-100 rounded-xl text-xs text-slate-600">
+                    <strong>Valor Agregado:</strong> Transfiere patrones espaciales y de atención en clase virtual sin requerir millones de imágenes de entrenamiento desde cero.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================================== -->
+    <!-- CAPA 6: SIMULADOR INTERACTIVO CLIENT-SIDE (JAVASCRIPT) -->
+    <!-- ====================================================================== -->
+    <section id="simulador" class="py-24 bg-slate-100 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-xs uppercase font-bold text-blue-600 tracking-wider">Demostración en Vivo</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 font-display">Simulador Interactivo de Riesgo Estudiantil</h2>
+                <p class="text-slate-600 mt-3 text-sm">Modifique las variables del estudiante y observe en tiempo real el cálculo de probabilidad del estimador.</p>
+            </div>
+
+            <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-200">
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div>
+                        <div class="flex justify-between text-sm font-semibold text-slate-700 mb-1">
+                            <span>Asistencia a Clases (%):</span>
+                            <span id="val_att" class="text-blue-600 font-bold">75%</span>
+                        </div>
+                        <input type="range" id="input_att" min="30" max="100" value="75" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-sm font-semibold text-slate-700 mb-1">
+                            <span>Promedio Anterior (GPA):</span>
+                            <span id="val_gpa" class="text-blue-600 font-bold">3.2</span>
+                        </div>
+                        <input type="range" id="input_gpa" min="10" max="50" value="32" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-sm font-semibold text-slate-700 mb-1">
+                            <span>Tareas / Asignaciones Vencidas:</span>
+                            <span id="val_deadlines" class="text-blue-600 font-bold">2</span>
+                        </div>
+                        <input type="range" id="input_deadlines" min="0" max="8" value="2" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-sm font-semibold text-slate-700 mb-1">
+                            <span>Nivel de Estrés (1 - 10):</span>
+                            <span id="val_stress" class="text-blue-600 font-bold">6</span>
+                        </div>
+                        <input type="range" id="input_stress" min="1" max="10" value="6" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                    </div>
+
+                    <div class="sm:col-span-2">
+                        <div class="flex justify-between text-sm font-semibold text-slate-700 mb-1">
+                            <span>Horas de Sueño Diario:</span>
+                            <span id="val_sleep" class="text-blue-600 font-bold">6.0 h</span>
+                        </div>
+                        <input type="range" id="input_sleep" min="30" max="90" value="60" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Resultado Dinámico -->
+                <div class="mt-8 pt-6 border-t border-slate-100">
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <div class="text-xs uppercase font-bold text-slate-400">Probabilidad Estimada de Deserción</div>
+                            <div id="prob_text" class="text-4xl font-extrabold font-display text-slate-900 mt-1">42.5%</div>
+                        </div>
+
+                        <!-- Barra de Progreso Visual -->
+                        <div class="w-full sm:w-1/2">
+                            <div class="w-full bg-slate-200 rounded-full h-3 overflow-hidden">
+                                <div id="prob_bar" class="h-3 rounded-full transition-all duration-300 bg-amber-500" style="width: 42.5%;"></div>
+                            </div>
+                            <div class="flex justify-between text-[10px] text-slate-400 mt-1 font-semibold">
+                                <span>0% (Bajo)</span>
+                                <span>35% (Medio)</span>
+                                <span>60% (Alto)</span>
+                                <span>100%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="alert_card" class="mt-6 p-4 rounded-xl text-sm font-medium border transition-all duration-300 bg-amber-50 border-amber-200 text-amber-900">
+                        <strong>⚠️ RIESGO MEDIO / ALERTA PREVENTIVA:</strong> Estudiante en zona de vulnerabilidad preventiva. Citar a sesión de refuerzo tutorial y revisar hábitos de descanso.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================================== -->
+    <!-- CAPA 7: VIDEO INTERACTIVO Y PRESENTACIÓN DEL PROYECTO -->
+    <!-- ====================================================================== -->
+    <section id="video" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs uppercase font-bold text-blue-600 tracking-wider">Presentación Multimedia</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 font-display">Video Interactivo del Proyecto</h2>
+            <p class="text-slate-600 mt-4 text-base">Explicación en español generada bajo las directrices del framework <strong>latent-spaces/brag</strong>, con diapositivas animadas, locución y selector de capítulos.</p>
+        </div>
+
+        <div class="bg-slate-900 rounded-3xl p-8 shadow-2xl border border-slate-800 text-white flex flex-col md:flex-row items-center gap-8">
+            <div class="w-full md:w-1/2 rounded-2xl bg-slate-800 border border-slate-700 p-6 flex flex-col justify-between h-72">
+                <div class="flex items-center space-x-3 text-blue-400 text-sm font-bold">
+                    <i class="fa-solid fa-clapperboard"></i>
+                    <span>Sintetizador Interactivo PDAE</span>
+                </div>
+                <div class="text-center">
+                    <i class="fa-solid fa-circle-play text-6xl text-blue-500 hover:text-blue-400 cursor-pointer transition transform hover:scale-105" onclick="abrirVideoInteractivo()"></i>
+                    <p class="text-xs text-slate-400 mt-3">Haga clic para iniciar la presentación interactiva con audio</p>
+                </div>
+                <div class="text-xs text-slate-500 text-center">
+                    Capítulos: Introducción • Kaggle 100k • Random Forest • Keras • Demo
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 space-y-4">
+                <h3 class="text-2xl font-bold font-display text-white">Estructura del Video Interactivo</h3>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    La presentación interactiva incluye 7 capítulos narrados que abarcan desde el diagnóstico educativo hasta la demostración en vivo del simulador en Streamlit:
+                </p>
+                <div class="space-y-2 text-xs text-slate-400">
+                    <div class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-400"></i><span>Minuto 0:00 - El problema crítico de la deserción universitaria</span></div>
+                    <div class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-400"></i><span>Minuto 1:15 - Pipeline ETL anti-leakage y Data Profiling</span></div>
+                    <div class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-400"></i><span>Minuto 2:30 - Rendimiento del Random Forest (F1: 87.4%)</span></div>
+                    <div class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-400"></i><span>Minuto 3:45 - Transfer Learning convolucional con Keras</span></div>
+                    <div class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-400"></i><span>Minuto 4:30 - Demostración del prototipo en Streamlit Cloud</span></div>
+                </div>
+                <div class="pt-2">
+                    <a href="video_interactivo.html" target="_blank" class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md transition">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <span>Abrir Reproductor Interactivo Completo</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================================== -->
+    <!-- CAPA 8: DOCUMENTACIÓN Y ADRs -->
+    <!-- ====================================================================== -->
+    <section class="py-24 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-xs uppercase font-bold text-blue-600 tracking-wider">Skill documentation-and-adrs</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-1 font-display">Registros de Arquitectura y Metodología</h2>
+                </div>
+                <a href="https://github.com/jerannydelossantosufhec-prog/Project_ML_PDRAE/tree/main/docs" target="_blank" class="mt-4 md:mt-0 text-sm font-bold text-blue-600 hover:text-blue-700 flex items-center space-x-1">
+                    <span>Explorar carpeta /docs</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <a href="docs/CRISP_ML_PDAE.md" target="_blank" class="p-6 rounded-2xl border border-slate-200 hover:border-blue-500 transition group bg-slate-50/50">
+                    <div class="text-xs font-bold text-blue-600 uppercase mb-2">Metodología Principal</div>
+                    <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition mb-2">CRISP-ML(Q) Completo</h3>
+                    <p class="text-slate-600 text-xs">6 fases documentadas, control de calidad QA, matriz de trazabilidad y gobernanza ética.</p>
+                </a>
+
+                <a href="docs/adr/0001-seleccion-algoritmo-random-forest-clasificacion-riesgo.md" target="_blank" class="p-6 rounded-2xl border border-slate-200 hover:border-blue-500 transition group bg-slate-50/50">
+                    <div class="text-xs font-bold text-emerald-600 uppercase mb-2">ADR-0001</div>
+                    <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition mb-2">Random Forest para Riesgo Tabular</h3>
+                    <p class="text-slate-600 text-xs">Justificación del ensamble de 100 árboles frente a redes neuronales densas y regresión logística.</p>
+                </a>
+
+                <a href="docs/adr/0002-transfer-learning-redes-neuronales-keras-analitica-visual.md" target="_blank" class="p-6 rounded-2xl border border-slate-200 hover:border-blue-500 transition group bg-slate-50/50">
+                    <div class="text-xs font-bold text-emerald-600 uppercase mb-2">ADR-0002</div>
+                    <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition mb-2">Transfer Learning con Keras</h3>
+                    <p class="text-slate-600 text-xs">Reutilización de pesos convolucionales de MobileNetV2 para análisis multimodal de engagement.</p>
+                </a>
+
+                <a href="docs/adr/0003-prevencion-data-leakage-estrategia-escalamiento-particion.md" target="_blank" class="p-6 rounded-2xl border border-slate-200 hover:border-blue-500 transition group bg-slate-50/50">
+                    <div class="text-xs font-bold text-emerald-600 uppercase mb-2">ADR-0003</div>
+                    <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition mb-2">Prevención de Data Leakage</h3>
+                    <p class="text-slate-600 text-xs">Partición estratificada obligatoria previa a cualquier ajuste del StandardScaler.</p>
+                </a>
+
+                <a href="docs/adr/0004-despliegue-streamlit-cloud-github-pages-landing.md" target="_blank" class="p-6 rounded-2xl border border-slate-200 hover:border-blue-500 transition group bg-slate-50/50">
+                    <div class="text-xs font-bold text-emerald-600 uppercase mb-2">ADR-0004</div>
+                    <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition mb-2">Despliegue Dual en Capas</h3>
+                    <p class="text-slate-600 text-xs">Sincronización de GitHub Pages (Landing Page) y Streamlit Community Cloud (App analítica).</p>
+                </a>
+
+                <a href="docs/adr/0005-gobernanza-etica-supervision-humana-sae.md" target="_blank" class="p-6 rounded-2xl border border-slate-200 hover:border-blue-500 transition group bg-slate-50/50">
+                    <div class="text-xs font-bold text-emerald-600 uppercase mb-2">ADR-0005</div>
+                    <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition mb-2">Gobernanza Ética y Human-in-the-Loop</h3>
+                    <p class="text-slate-600 text-xs">Prohibición de uso punitivo de alertas y supervisión humana en cada decisión tutorial.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================================== -->
+    <!-- CAPA 9: FOOTER Y METADATOS ACADÉMICOS -->
+    <!-- ====================================================================== -->
+    <footer class="bg-slate-950 text-slate-400 py-16 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div class="md:col-span-2 space-y-4">
+                    <div class="flex items-center space-x-3 text-white">
+                        <i class="fa-solid fa-graduation-cap text-2xl text-blue-500"></i>
+                        <span class="text-lg font-bold font-display">PDAE - Machine Learning en Educación</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed max-w-md">
+                        Proyecto desarrollado como entrega final para el curso de <strong>Machine Learning</strong> en la 
+                        <strong>Maestría en Inteligencia Artificial, Educación e Investigación</strong> de la 
+                        <strong>Universidad Federico Henríquez y Carvajal (UFHEC)</strong>.
+                    </p>
+                    <div class="text-xs text-slate-500">
+                        Autora: <strong>Jeranny Antonia De Los Santos Concepción</strong>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs uppercase font-bold text-white tracking-wider mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="https://Project_ML_PDAE.streamlit.app" target="_blank" class="hover:text-blue-400 transition">App en Streamlit</a></li>
+                        <li><a href="https://github.com/jerannydelossantosufhec-prog/Project_ML_PDRAE.git" target="_blank" class="hover:text-blue-400 transition">Repositorio GitHub</a></li>
+                        <li><a href="video_interactivo.html" target="_blank" class="hover:text-blue-400 transition">Video Interactivo</a></li>
+                        <li><a href="docs/CRISP_ML_PDAE.md" target="_blank" class="hover:text-blue-400 transition">Documento CRISP-ML(Q)</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs uppercase font-bold text-white tracking-wider mb-4">Dataset y Herramientas</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="https://www.kaggle.com/datasets/mohankrishnathalla/student-academic-performance-and-dropout-risk" target="_blank" class="hover:text-blue-400 transition">Kaggle 100k Dataset</a></li>
+                        <li><span class="text-slate-500">Scikit-Learn • Random Forest</span></li>
+                        <li><span class="text-slate-500">TensorFlow / Keras MobileNetV2</span></li>
+                        <li><span class="text-slate-500">YData Profiling • Plotly</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-900 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+                <p>© 2026 Jeranny Antonia De Los Santos C. • Licencia MIT de Código Abierto.</p>
+                <p class="mt-2 sm:mt-0">Desplegado en GitHub Pages y Streamlit Community Cloud.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lógica del Simulador Interactivo en JavaScript (Heurística Calibrada con Random Forest) -->
+    <script>
+        function calcularRiesgo() {
+            const att = parseFloat(document.getElementById('input_att').value);
+            const gpa = parseFloat(document.getElementById('input_gpa').value) / 10.0;
+            const deadlines = parseFloat(document.getElementById('input_deadlines').value);
+            const stress = parseFloat(document.getElementById('input_stress').value);
+            const sleep = parseFloat(document.getElementById('input_sleep').value) / 10.0;
+
+            // Actualizar etiquetas visuales
+            document.getElementById('val_att').innerText = att + '%';
+            document.getElementById('val_gpa').innerText = gpa.toFixed(1);
+            document.getElementById('val_deadlines').innerText = deadlines;
+            document.getElementById('val_stress').innerText = stress;
+            document.getElementById('val_sleep').innerText = sleep.toFixed(1) + ' h';
+
+            // Función logit calibrada congruente con el Random Forest
+            const logit = (-0.08 * (att - 75)) - (1.25 * (gpa - 3.2)) + (0.55 * deadlines) + (0.28 * (stress - 5)) - (0.35 * (sleep - 6.5)) - 0.8;
+            let prob = 1.0 / (1.0 + Math.exp(-logit));
+            prob = Math.min(Math.max(prob, 0.02), 0.98);
+
+            const pct = (prob * 100).toFixed(1);
+            document.getElementById('prob_text').innerText = pct + '%';
+            const bar = document.getElementById('prob_bar');
+            bar.style.width = pct + '%';
+
+            const alertCard = document.getElementById('alert_card');
+
+            if (prob >= 0.60) {
+                bar.className = 'h-3 rounded-full transition-all duration-300 bg-red-500';
+                alertCard.className = 'mt-6 p-4 rounded-xl text-sm font-medium border transition-all duration-300 bg-red-50 border-red-200 text-red-900';
+                alertCard.innerHTML = `<strong>🚨 ALTO RIESGO DE DESERCIÓN (${pct}%):</strong> Desvinculación académica crítica por acumulación de ${deadlines} entregas vencidas y asistencia de ${att}%. Activar protocolo de tutoría prioritaria inmediata.`;
+            } else if (prob >= 0.35) {
+                bar.className = 'h-3 rounded-full transition-all duration-300 bg-amber-500';
+                alertCard.className = 'mt-6 p-4 rounded-xl text-sm font-medium border transition-all duration-300 bg-amber-50 border-amber-200 text-amber-900';
+                alertCard.innerHTML = `<strong>⚠️ RIESGO MEDIO / ALERTA PREVENTIVA (${pct}%):</strong> Estudiante en zona de vulnerabilidad preventiva. Citar a sesión de refuerzo tutorial y revisar hábitos de descanso.`;
+            } else {
+                bar.className = 'h-3 rounded-full transition-all duration-300 bg-emerald-500';
+                alertCard.className = 'mt-6 p-4 rounded-xl text-sm font-medium border transition-all duration-300 bg-emerald-50 border-emerald-200 text-emerald-900';
+                alertCard.innerHTML = `<strong>✅ ESTUDIANTE ESTABLE / BAJO RIESGO (${pct}%):</strong> Hábitos de estudio y rendimiento equilibrados. Mantener seguimiento ordinario.`;
+            }
+        }
+
+        // Asignar listeners a todos los sliders
+        document.getElementById('input_att').addEventListener('input', calcularRiesgo);
+        document.getElementById('input_gpa').addEventListener('input', calcularRiesgo);
+        document.getElementById('input_deadlines').addEventListener('input', calcularRiesgo);
+        document.getElementById('input_stress').addEventListener('input', calcularRiesgo);
+        document.getElementById('input_sleep').addEventListener('input', calcularRiesgo);
+
+        function abrirVideoInteractivo() {
+            window.location.href = 'video_interactivo.html';
+        }
+
+        // Ejecución inicial
+        calcularRiesgo();
+    </script>
+</body>
+</html>
+

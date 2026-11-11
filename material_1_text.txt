@@ -1,0 +1,1663 @@
+
+
+
+
+
+Proyecto: Machine 
+Learning
+
+
+ACTIVIDAD 
+
+“Framework en Machine 
+Learning
+ y Analítica Predictiva-Prescriptiva para Optimizar la Permanencia Estudiantil y la Pertinencia Curricular mediante la Integración de Datos Abiertos y SNIES”
+
+Taller colaborativo en grupos de 3-4 integrantes · 70 minutos
+
+Como funciona esta actividad
+
+Su grupo diseñará una solución basada en Machine 
+Learning
+ orientada a resolver un problema real.
+
+⚠️ Mentalidad del ejercicio
+
+No eres programador aquí.Eres arquitecto de soluciones con Machine 
+Learning
+.
+
+Vas a definir:
+
+Problema real 
+
+Tipo de modelo ML 
+
+Datos necesarios 
+
+Impacto real 
+
+Riesgos
+
+
+
+Tiempo de diseño: 30 
+min  |
+  Presentación (
+elevator
+ pitch): 5 min por grupo
+
+
+
+
+Parte 1 — Plantilla de diseño del proyecto (30 minutos)
+
+Integrantes del grupo:
+
+Feibert Alirio Guzmán Pérez
+
+Área disciplinar:
+
+Ingeniería de Sistemas / Ciencia de Datos e IA
+
+Proyecto: 
+Academy
+ DATA
+
+
+
+FOTOS:
+
+
+
+
+
+1. El problema que quieren resolver.
+
+Describan el problema o necesidad concreta que identifican en su contexto:
+
+Describan un problema real en su contexto relacionado con:
+
+☒ Transformación digital
+
+☒ Brecha tecnológica
+
+☒ Toma de decisiones basada en datos
+
+☒ Uso de IA en educación
+
+☒ Educación
+
+
+
+✍️Introducción
+
+La creciente ola de datos sin analizar enmarca el presente proyecto con la investigación establecida sobre la toma de decisiones institucionales impulsada por IA en la educación superior, aunque la evidencia sobre la arquitectura 
+multimodelo
+ específica y la integración SNIES es limitada en las fuentes disponibles cabe resaltar que dentro del ecosistema de Datos Abiertos de Colombia y del Sistema Nacional de Información de la Educación Superior (SNIES), la investigación evoluciona desde un enfoque descriptivo hacia un Framework Inteligente de Analítica Predictiva y Prescriptiva.
+
+En concordancia, los diferentes paradigmas de Machine 
+Learning
+ para apoyar la toma de decisiones estratégicas en las Instituciones de Educación Superior (IES). De esta manera, se busca defender la democratización de la educación y promover la transparencia en la gestión de la información, aspectos que impulsan una transformación en los procesos de investigación, docencia, extensión y aseguramiento de la calidad. Asimismo, favorece la adopción de procesos analíticos orientados a optimizar el 
+constructo
+ de pertinencia al interior de los claustros académicos, en concordancia con la necesidad de tomar decisiones oportunas y fundamentadas en evidencia.
+
+De igual manera, facilita el diseño de estrategias curriculares sustentadas en datos, optimizando la gestión institucional y potenciando la capacidad de acción de los analistas de datos mediante herramientas de Machine 
+Learning
+, procesamiento de lenguaje natural (NLP) y modelamiento analítico. Estas tecnologías permiten transformar grandes volúmenes de datos en conocimiento útil para incrementar la eficiencia operativa, fortalecer la toma de decisiones y contribuir al mejoramiento continuo de las Instituciones de Educación Superior. De esta manera Cardona &amp; Arbelaez (2019), validan la evolución desde enfoques descriptivos (Análisis de Aprendizaje) a enfoques predictivos (Minería de Datos Educativas) para la mejora continua.
+
+Para la predicción específica de la retención de estudiantes, Alamo, (2024), confirma que la IA y el aprendizaje automático identifican eficazmente patrones en grandes conjuntos de datos para gestionar la deserción estudiantil mediante intervenciones personalizadas.  Zambrano et al., (2026) demuestran la capacidad de la IA para optimizar automáticamente el diseño curricular, apoyando el objetivo del marco de fortalecer la relevancia curricular.
+
+Sin embargo, las fuentes no abordan explícitamente la arquitectura supervisada/no supervisada 
+multimodelo
+ ni la integración específica de SNIES. La evidencia apoya el enfoque general, pero carece de documentación sobre la implementación técnica de este marco en particular.
+
+
+
+
+
+✍️Describe el problema antecedente:
+
+El Ministerio de Educación Nacional (MEN) de Colombia, a través del Decreto 1330 de 2019 y las resoluciones subsiguientes, exige a las IES una rigurosa fundamentación estadística, teórica y de contexto para la obtención o renovación del Registro Calificado mediante el "Documento Maestro". Tradicionalmente, la construcción de los capítulos de Justificación del Programa, Pertinencia Social y Académica y Estrategias de Retención se realiza mediante procesos artesanales de consulta, descarga de archivos planos (CSV/Excel) y análisis estáticos que carecen de dinamismo y capacidad predictiva.
+
+Paralelamente, el Estado colombiano ha avanzado en la política de Gobierno Digital, 
+disponibilizando
+ las bases de datos del SNIES y el portal institucional de Datos Abiertos mediante arquitecturas de API REST (
+Socrata
+). A pesar de la disponibilidad de estos grandes volúmenes de datos (Big Data gubernamental), existe un vacío tecnológico y metodológico en las IES para consumir, procesar, cruzar y modelar estadísticamente estos flujos de información en tiempo real. La ausencia de un pipeline de datos automatizado impide realizar análisis de analítica prescriptiva y predictiva respecto a cómo las tendencias del entorno externo afectan directamente la retención interna y la vigencia curricular de los programas.
+
+
+
+1. Componentes Metodológicos Identificados (Línea de Base)
+
+Unidad de Análisis: El programa académico de educación superior en Colombia (comparado sectorialmente frente a su núcleo básico de conocimiento - NBC o área de conocimiento del SNIES).
+
+Variables Independientes ($
+X_n
+$): * Dimensión Sectorial (SNIES): Matrícula histórica, tasas de deserción agregadas por metodología (presencial/virtual), origen geográfico, y caracterización de la planta docente del sector.
+
+Dimensión Socioeconómica y Laboral (Datos Abiertos): Índices de empleabilidad por área, salarios de enganche del Observatorio Laboral para la Educación (OLE), y variables macroeconómicas regionales (PIB departamental, desempleo).
+
+Contexto de Espacio y Tiempo: Territorio de la República de Colombia; datos históricos consolidados en las API gubernamentales (típicamente ventanas de los últimos 5 a 10 años) con proyecciones al horizonte de vigencia del Registro Calificado (7 años).
+
+
+
+Problemática Detallada
+
+El diseño de un Documento Maestro en las IES colombianas enfrenta una ineficiencia metodológica crítica: la desconexión entre los datos analíticos del sector y la toma de decisiones curriculares. Las universidades procesan de manera aislada sus métricas internas de deserción, ignorando el comportamiento predictivo y prescriptivo de las variables del entorno (como las tasas de deserción de programas homólogos en el SNIES o los cambios en el mercado laboral capturados en Datos Abiertos).
+
+Este fenómeno genera tres desafíos metodológicos principales:
+
+Vacío de Generalización en Modelos de Deserción: Los modelos analíticos tradicionales de las universidades son endógenos (solo miran al estudiante hacia adentro), lo que impide anticipar la deserción causada por factores exógenos del mercado o por asimetrías de pertinencia frente a la oferta nacional del SNIES.
+
+Obsolescencia del Análisis Curricular: La verificación 
+microcurricular
+ de pertinencia se realiza bajo criterios cualitativos y subjetivos. No existen algoritmos de procesamiento de lenguaje natural (NLP) o de minería de datos que comparen la estructura curricular de una IES con los estándares normativos e históricos del SNIES de forma automatizada.
+
+Costos de Operación y Barreras de Acceso Técnico: La recopilación manual de evidencias para el aseguramiento de la calidad consume meses de trabajo analítico por parte de los comités curriculares. Al no disponer de una interfaz unificada (un tablero de control predictivo y prescriptivo), las decisiones se toman con datos desactualizados, lo que compromete la rigurosidad científica exigida por los pares académicos del Consejo Nacional de Acreditación (CNA) y de la CONACES.
+
+El proyecto de Machine 
+Learning
+ propuesto resuelve esta problemática al transformar datos abiertos crudos y dispersos en un motor de inferencia estadística parametrizado, estandarizando la evidencia técnico-científica necesaria para sustentar la viabilidad de cualquier programa académico en Colombia.
+
+🎯 Variable objetivo (
+target
+)
+
+👉 ¿Qué quieres predecir o analizar?
+
+Variable Objetivo (Dependiente $Y$): 
+
+
+
+Tasa de deserción anual/semestral proyectada del programa y el Índice de Pertinencia Curricular (métrica compuesta basada en la brecha entre la oferta académica del SNIES y la demanda 
+socio-laboral
+ reflejada en Datos Abiertos).
+
+
+
+Variable objetivo: 
+Tasa_Deserción_Proyectada
+ e 
+Índice_Pertinencia_Curricular
+.
+
+Tipo: Predicción 
+multisalida
+ (
+multi-output
+), compuesta por:
+
+Regresión para la 
+Tasa_Deserción_Proyectada
+. 
+
+Regresión (o índice 
+continuo
+ normalizado de 0 a 100) para el 
+Índice_Pertinencia_Curricular
+. 
+
+Variable 1 (
+Tasa_Deserción_Proyectada
+):
+
+Representa el porcentaje estimado de estudiantes que desertarán del programa en el siguiente periodo académico (semestral o anual). 
+
+El valor objetivo se calcula a partir del histórico de deserción, variables socioeconómicas, rendimiento académico, permanencia estudiantil, indicadores institucionales y variables contextuales provenientes de fuentes oficiales. 
+
+Variable 2 (
+Índice_Pertinencia_Curricular
+):
+
+Representa el nivel de alineación entre la oferta académica del programa y las necesidades del entorno productivo y social. 
+
+Se expresa como un índice continuo (0–100), donde valores más altos indican mayor pertinencia. 
+
+El índice se calcula mediante una métrica compuesta que integra: 
+
+Correspondencia entre competencias del currículo y perfiles ocupacionales. 
+
+Brecha entre la oferta académica registrada en el SNIES y la demanda laboral identificada en Datos Abiertos. 
+
+Tendencias de empleabilidad y sectores económicos prioritarios. 
+
+Indicadores regionales de desarrollo y necesidades del mercado laboral.
+
+
+
+🎯 Variables Independientes 
+
+Variables Independientes ($
+X_n
+$):
+
+Dimensión Académica e Institucional (SNIES): Matrícula histórica por programa y nivel de formación, tasas de deserción y graduación, permanencia estudiantil, número de admitidos, cobertura, metodología (presencial, virtual o híbrida), características del programa, acreditación, cualificación y dedicación de la planta docente, relación estudiante-docente e indicadores de calidad institucional. 
+
+Dimensión Socioeconómica y Laboral (Datos Abiertos y OLE): Tasas de empleabilidad por área del conocimiento, salarios de enganche, demanda de ocupaciones, vacantes laborales, indicadores económicos regionales (PIB, desempleo, informalidad), sectores productivos estratégicos, dinámica empresarial y necesidades de talento humano por región. 
+
+Dimensión Demográfica y Territorial (DANE y Datos Abiertos): Proyecciones poblacionales, distribución por edad, nivel educativo, migración, urbanización, índices de pobreza, acceso a educación superior y características socioeconómicas de la población en las áreas de influencia de cada institución. 
+
+Dimensión Curricular y de Pertinencia: Correspondencia entre competencias del currículo y perfiles ocupacionales, actualización de los planes de estudio, articulación con políticas públicas, alineación con sectores económicos prioritarios, incorporación de competencias digitales y análisis de la brecha entre la oferta académica y la demanda laboral. 
+
+Contexto 
+Espacio-Temporal
+: Territorio de la República de Colombia; integración de información histórica proveniente de SNIES, Observatorio Laboral para la Educación (OLE), DANE y portales de Datos Abiertos, utilizando series temporales consolidadas de los últimos 5 a 10 años para generar predicciones y apoyar la toma de decisiones durante el horizonte de vigencia del Registro Calificado (7 años).
+
+
+
+NOTA: identifica claramente las fuentes oficiales (SNIES, OLE, DANE y Datos Abiertos) y contempla tanto factores académicos como socioeconómicos y territoriales que influyen en la deserción estudiantil y la pertinencia curricular.
+
+
+
+❓ Pregunta de investigación (orientada a ML):👉 ¿Qué quieres predecir, clasificar o descubrir?
+
+¿En qué medida la integración y modelado predictivo y prescriptivo de las variables 
+macro-educativas
+ del SNIES y los indicadores 
+socio-laborales
+ de Datos Abiertos Colombia, consolidados en una plataforma analítica en 
+Streamlit
+, permiten optimizar las proyecciones de deserción/retención y fundamentar la pertinencia micro y 
+macrocurricular
+ requerida en los Documentos Maestros de las Instituciones de Educación Superior?
+
+
+🎯¿
+A quién impacta? 
+
+El proyecto impacta directamente a las Instituciones de Educación Superior (IES), especialmente a los directivos, oficinas de planeación, analistas de datos, coordinadores y directores de programa, comités curriculares, unidades de aseguramiento de la calidad, investigadores y responsables de los procesos de Registro Calificado y Acreditación. Asimismo, beneficia a docentes y estudiantes al fortalecer las estrategias institucionales de permanencia estudiantil y actualización curricular.
+
+De manera indirecta, favorece al Ministerio de Educación Nacional (MEN), al SNIES, al Consejo Nacional de Acreditación (CNA), a CONACES y a los organismos encargados de formular políticas públicas, al proporcionar evidencia analítica derivada de Datos Abiertos para apoyar la toma de decisiones y el seguimiento del sistema de educación superior.
+
+El principal aporte del 
+framework
+ consiste en transformar grandes volúmenes de datos abiertos en información estratégica mediante técnicas de Machine 
+Learning
+ supervisado y no supervisado, generando predicciones, segmentaciones y recomendaciones prescriptivas que optimizan la permanencia estudiantil, fortalecen la pertinencia curricular y agilizan la elaboración de Documentos Maestros. Esto permite reducir los tiempos de análisis, incrementar la eficiencia institucional y promover una cultura de decisiones fundamentadas en evidencia.
+
+
+
+
+
+
+
+2. Arquitectura de IA y toma de decisión tecnológica
+
+MODELO DE MACHINE LEARNING
+
+¿Tipo de enfoque? Marquen una [X] y justifiquen:
+
+[X]
+
+MODELOS SUPERVISADOS (con datos etiquetados)
+
+Se empleará para construir modelos predictivos que estimen la Tasa de Deserción Proyectada y el Índice de Pertinencia Curricular, utilizando información histórica proveniente del SNIES, Observatorio Laboral para la Educación (OLE), DANE y el Portal Nacional de Datos Abiertos. Se evaluarán múltiples algoritmos de regresión, clasificación y ensambles mediante 
+AutoML
+ para seleccionar automáticamente el modelo con mejor desempeño.
+
+[
+X ]
+
+
+NO supervisados (sin 
+target
+)
+
+Se utilizan para descubrir patrones ocultos, segmentar programas académicos e Instituciones de Educación Superior con características similares, detectar anomalías y analizar perfiles de riesgo mediante técnicas de 
+clustering
+ y reducción de dimensionalidad. Estos resultados fortalecen el componente de analítica prescriptiva del 
+framework
+.
+
+[ ]
+
+No constituye el enfoque principal del proyecto. Como trabajo futuro podría incorporarse para optimizar estrategias de intervención institucional mediante agentes inteligentes o asistentes basados en Modelos de Lenguaje (LLM) que automaticen la generación de recomendaciones para la formulación de Documentos Maestros.
+
+NOTA: (para que nadie se pierda)
+
+ ¿Quieres predecir la deserción o la pertinencia curricular? → Aprendizaje Supervisado.
+
+ ¿Quieres descubrir grupos de programas o instituciones con comportamientos similares? → Aprendizaje No Supervisado.
+
+ ¿Quieres recomendar estrategias institucionales basadas en los resultados? → Analítica Prescriptiva.
+
+ ¿Quieres automatizar la generación de informes o recomendaciones mediante IA generativa? → Modelos 
+Preentrenados
+ (trabajo futuro).
+
+🎯 Modelo seleccionado
+
+El proyecto implementará un Framework de Machine 
+Learning
+ 
+Multimodelo
+ capaz de comparar automáticamente diferentes algoritmos mediante técnicas de 
+AutoML
+.
+
+La experimentación se realizará utilizando 
+PyCaret
+ como plataforma principal para entrenamiento, validación cruzada, comparación y selección automática de modelos, complementado con FLAML (
+Fast
+ 
+Lightweight
+ 
+AutoML
+) para optimizar los tiempos de entrenamiento y la búsqueda eficiente de 
+hiperparámetros
+.
+
+El 
+framework
+ evaluará múltiples algoritmos antes de seleccionar el modelo con mejor desempeño para cada problema.
+
+Modelos Supervisados
+
+“Random Forest”
+
+
+XGBoost
+
+
+
+LightGBM
+
+
+
+CatBoost
+
+
+Extra Trees
+
+“
+Gradient
+ 
+Boosting
+”
+
+
+AdaBoost
+
+
+“
+Decision
+ Tree”
+
+“
+Support
+ Vector Machine (SVM)”
+
+“K-
+Nearest
+ Neighbors (KNN)”
+
+“Ridge 
+Regression
+”
+
+“Lasso 
+Regression
+”
+
+“Regresión Lineal” 
+
+“Regresión Logística”
+
+
+Elastic
+ Net
+
+Redes Neuronales (MLP)
+
+Modelos No Supervisados
+
+“K-Means”
+
+
+MiniBatch
+ K-Means
+
+“DBSCAN”
+
+HDBSCAN
+
+
+Agglomerative
+ 
+Clustering
+
+
+Gaussian Mixture Models (GMM)
+
+
+Spectral
+ 
+Clustering
+
+
+“PCA”
+
+UMAP
+
+t-SNE
+
+
+Isolation
+ Forest
+
+Local 
+Outlier
+ Factor (LOF)
+
+La selección del modelo óptimo se realizará mediante métricas de desempeño como:
+
+
+Accuracy
+
+
+
+Precision
+
+
+
+Recall
+
+
+F1-Score
+
+ROC-AUC
+
+MAE
+
+RMSE
+
+R²
+
+Dependiendo de la naturaleza de cada variable objetivo. El 
+framework
+ comparará automáticamente el rendimiento de cada algoritmo mediante validación cruzada y métricas de evaluación, seleccionando el modelo con mejor capacidad predictiva e interpretativa para cada escenario de análisis.
+
+🧠 Justificación
+
+¿Qué tipo de datos tienes? 
+
+El 
+framework
+ integra datos estructurados provenientes de fuentes oficiales como SNIES, DANE, Observatorio Laboral para la Educación (OLE) y el Portal Nacional de Datos Abiertos. Entre las variables de entrada se incluyen indicadores académicos, institucionales, socioeconómicos, demográficos, laborales y curriculares relacionados con la permanencia estudiantil y la pertinencia de los programas académicos.
+
+Las variables objetivo corresponden a la Tasa de Deserción Proyectada y al Índice de Pertinencia Curricular, complementadas con modelos no supervisados que identifican patrones, segmentos y anomalías dentro del ecosistema de educación superior.
+
+¿Qué problema resuelve este modelo? 
+
+El 
+framework
+ transforma grandes volúmenes de Datos Abiertos en inteligencia institucional para apoyar la toma de decisiones estratégicas. Permite predecir el riesgo de deserción, evaluar la pertinencia curricular, identificar grupos de programas con características similares, detectar comportamientos atípicos y generar recomendaciones prescriptivas que fortalezcan la permanencia estudiantil, la actualización curricular y la elaboración de Documentos Maestros requeridos en los procesos de Registro Calificado y Acreditación.
+
+
+
+
+¿Por qué es la mejor opción?
+
+La combinación de múltiples algoritmos de Machine 
+Learning
+ permite aprovechar las fortalezas de cada paradigma de aprendizaje, incrementando la precisión, robustez e interpretabilidad de los resultados. Los modelos supervisados proporcionan predicciones cuantitativas sobre la deserción y la pertinencia curricular, mientras que los modelos no supervisados descubren patrones ocultos y segmentan programas académicos con comportamientos similares. Finalmente, la integración de ambos enfoques posibilita la construcción de un sistema de analítica prescriptiva que recomienda acciones basadas en evidencia para optimizar la gestión académica y apoyar la toma de decisiones en las Instituciones de Educación Superior.
+
+
+
+
+
+
+🎯 Arquitectura de Datos
+
+Para un proyecto de investigación, la arquitectura de datos se entiende mucho mejor en formato tabular. Además, deja más claro el flujo ETL + Machine 
+Learning
+ + Analítica Prescriptiva. Te propongo la siguiente versión:
+
+Arquitectura de Datos del Framework
+
+Fase
+
+Proceso
+
+Fuentes / Tecnologías
+
+Salida Esperada
+
+1. Captura de Datos
+
+Consumo automatizado de información mediante API REST y archivos abiertos.
+
+SNIES, Datos Abiertos Colombia (API 
+Socrata
+), DANE, Observatorio Laboral para la Educación (OLE).
+
+Datos académicos, socioeconómicos, laborales, demográficos y territoriales consolidados.
+
+2. Integración (ETL)
+
+Extracción, limpieza, transformación y unificación de múltiples fuentes de datos.
+
+Python (Pandas, 
+Requests
+), JSON, CSV, API REST, 
+SoQL
+ (
+Socrata
+).
+
+Dataset maestro integrado y normalizado.
+
+3. Preparación de Datos
+
+Tratamiento de valores faltantes, eliminación de duplicados, detección de valores atípicos, codificación de variables categóricas, normalización e ingeniería de características (
+Feature
+ 
+Engineering
+).
+
+Scikit-
+learn
+, 
+NumPy
+, Pandas.
+
+Datos listos para el entrenamiento de modelos de Machine 
+Learning
+.
+
+4. Analítica Supervisada
+
+Comparación automática de algoritmos de clasificación y regresión mediante 
+AutoML
+ para predecir la deserción y estimar el Índice de Pertinencia Curricular.
+
+
+PyCaret
+, FLAML, Random Forest, 
+XGBoost
+, 
+LightGBM
+, 
+CatBoost
+, Extra Trees, Redes Neuronales, SVM, entre otros.
+
+Modelo óptimo seleccionado con base en métricas de desempeño.
+
+5. Analítica No Supervisada
+
+Descubrimiento de patrones, segmentación de programas académicos, agrupación de IES y detección de anomalías.
+
+K-Means, DBSCAN, HDBSCAN, PCA, UMAP, t-SNE, Gaussian Mixture Models, 
+Isolation
+ Forest.
+
+Clústeres, perfiles institucionales y patrones ocultos para apoyar la toma de decisiones.
+
+6. Selección Automática del Modelo
+
+Evaluación comparativa mediante validación cruzada y optimización de 
+hiperparámetros
+ para seleccionar el mejor algoritmo.
+
+
+PyCaret
+, FLAML, Cross 
+Validation
+, 
+Grid
+ Search, 
+Bayesian
+ 
+Optimization
+.
+
+Modelo final con el mayor desempeño predictivo e interpretabilidad.
+
+7. Analítica Predictiva
+
+Proyección de indicadores institucionales.
+
+Modelo seleccionado.
+
+Predicción de la Tasa de Deserción Proyectada y del Índice de Pertinencia Curricular.
+
+8. Analítica Prescriptiva
+
+Generación automática de recomendaciones basadas en los resultados predictivos y los patrones descubiertos.
+
+Motor de reglas de negocio + resultados de Machine 
+Learning
+.
+
+Estrategias para fortalecer la permanencia estudiantil, actualizar 
+microcurrículos
+, priorizar programas en riesgo y apoyar la elaboración de Documentos Maestros.
+
+9. Visualización y Toma de Decisiones
+
+Publicación de 
+dashboards
+ interactivos y reportes ejecutivos para usuarios institucionales.
+
+
+Streamlit
+, 
+Plotly
+, Power BI (opcional).
+
+Plataforma inteligente para el análisis, monitoreo y apoyo a la toma de decisiones basada en evidencia.
+
+
+
+Fuentes Oficiales Integradas
+
+Entidad
+
+Información
+
+Acceso
+
+SNIES
+
+Programas académicos, matrícula, graduación, permanencia, deserción, cobertura e indicadores institucionales.
+
+https://snies.mineducacion.gov.co
+
+Datos Abiertos Colombia
+
+Conjuntos de datos de educación, economía, empleo, territorio y desarrollo regional mediante API 
+Socrata
+.
+
+https://www.datos.gov.co
+
+API 
+Socrata
+
+
+Consumo de 
+datasets
+ en formatos JSON, CSV y consultas mediante 
+SoQL
+.
+
+https://dev.socrata.com
+
+DANE
+
+Indicadores demográficos, sociales, económicos y territoriales.
+
+https://www.dane.gov.co
+
+Observatorio Laboral para la Educación (OLE)
+
+Empleabilidad, salarios de enganche e inserción laboral de graduados.
+
+https://ole.mineducacion.gov.co
+
+Valor agregado de esta arquitectura
+
+Esta arquitectura combina Datos Abiertos, consumo automatizado mediante 
+APIs
+, procesos ETL, 
+AutoML
+ (
+PyCaret
+ y FLAML), aprendizaje supervisado, aprendizaje no supervisado y analítica prescriptiva, conformando un Framework Inteligente de Machine 
+Learning
+ 
+Multimodelo
+ que automatiza el ciclo completo de adquisición, procesamiento, análisis y generación de recomendaciones para apoyar la toma de decisiones estratégicas en las Instituciones de Educación Superior colombianas. Esto está totalmente alineado con el enfoque de innovación y reutilización de datos promovido por Datos Abiertos Colombia.
+
+
+
+3. Los datos que necesitarían
+
+¿Qué tipo de datos necesitarían?
+
+¿De dónde los obtendrían?
+
+Datos académicos: matrícula, permanencia, deserción, graduación, cobertura, programas académicos, modalidad, nivel de formación, acreditación, Registro Calificado, Núcleos Básicos del Conocimiento (NBC), características institucionales y planta docente.
+
+SNIES (Sistema Nacional de Información de la Educación Superior) https://snies.mineducacion.gov.co
+
+Datos laborales: empleabilidad de graduados, salarios de enganche, inserción laboral, demanda ocupacional y sectores productivos.
+
+Observatorio Laboral para la Educación (OLE) https://ole.mineducacion.gov.co
+
+Datos demográficos y socioeconómicos: población, proyecciones demográficas, pobreza multidimensional, desempleo, informalidad, PIB regional, indicadores sociales y económicos.
+
+DANE https://www.dane.gov.co
+
+Datos abiertos gubernamentales: educación, economía, empleo, territorio, indicadores regionales, desarrollo social y variables complementarias para enriquecer los modelos.
+
+Portal Nacional de Datos Abiertos https://www.datos.gov.co
+
+Datos geográficos: ubicación de Instituciones de Educación Superior, municipios, departamentos y regiones para análisis espacial.
+
+Datos Abiertos Colombia, DANE y servicios cartográficos abiertos (
+GeoJSON
+).
+
+Dataset integrado del proyecto: consolidación automática de todas las fuentes oficiales mediante procesos ETL, generando un repositorio estructurado para entrenamiento y validación de modelos.
+
+Framework desarrollado en Python mediante consumo de 
+APIs
+ REST y archivos CSV/JSON provenientes de las fuentes oficiales.
+
+
+
+Datos y Analítica para la Toma de Decisiones
+
+🔄 Proceso ETL (
+Extract
+, 
+Transform
+, Load)
+
+Antes de entrenar los modelos de Machine 
+Learning
+, los datos serán preparados mediante un proceso ETL automatizado que garantizará la calidad, consistencia e integración de la información proveniente de múltiples fuentes oficiales.
+
+Pipeline Inteligente del Framework
+
+Definir las variables objetivo (Tasa de Deserción Proyectada e Índice de Pertinencia Curricular). 
+
+Consumir automáticamente los 
+datasets
+ oficiales mediante 
+APIs
+ REST (SNIES, Datos Abiertos Colombia, DANE y OLE). 
+
+Integrar la información académica, laboral, socioeconómica y territorial en un único repositorio analítico. 
+
+Validar la calidad de los datos mediante reglas de negocio (duplicados, consistencia, formatos y valores fuera de rango). 
+
+Realizar procesos de limpieza, transformación e ingeniería de características (
+Feature
+ 
+Engineering
+). 
+
+Seleccionar automáticamente las variables más relevantes mediante técnicas de selección de características. 
+
+Dividir los datos en conjuntos de entrenamiento, validación y prueba utilizando validación cruzada. 
+
+Comparar automáticamente múltiples algoritmos mediante 
+PyCaret
+ y FLAML, evaluando modelos supervisados y no supervisados. 
+
+Seleccionar el mejor modelo según métricas de desempeño e interpretabilidad. 
+
+Publicar los resultados en una plataforma 
+Streamlit
+ con 
+dashboards
+ interactivos, predicciones y recomendaciones prescriptivas para apoyar la toma de decisiones institucionales. 
+
+
+
+📌 Tener presente ¿Qué significa ETL?
+
+
+Extract
+ (Extraer): Obtener datos desde múltiples fuentes oficiales mediante 
+APIs
+, servicios REST y conjuntos de datos abiertos. 
+
+
+Transform
+ (Transformar): Limpiar, integrar, normalizar y preparar los datos para el análisis y entrenamiento de modelos. 
+
+Load (Cargar): Consolidar la información en un repositorio estructurado para Machine 
+Learning
+, visualización y analítica prescriptiva. 
+
+
+
+🧠 Aplicación en el proyecto
+
+🔹 
+Extract
+ — ¿De dónde obtienen los datos?
+
+Los datos serán obtenidos automáticamente mediante consumo de 
+APIs
+ y servicios abiertos de entidades oficiales del Estado colombiano.
+
+Fuente
+
+Tipo de información
+
+Acceso
+
+SNIES
+
+Matrícula, permanencia, graduación, deserción, programas académicos, IES y calidad.
+
+https://snies.mineducacion.gov.co
+
+Datos Abiertos Colombia
+
+Educación, economía, empleo, territorio y desarrollo regional mediante API 
+Socrata
+.
+
+https://www.datos.gov.co
+
+API 
+Socrata
+
+
+Consumo automatizado de 
+datasets
+ en formatos JSON, CSV y consultas 
+SoQL
+.
+
+https://dev.socrata.com
+
+DANE
+
+Indicadores demográficos, económicos y territoriales.
+
+https://www.dane.gov.co
+
+OLE
+
+Empleabilidad, salarios e inserción laboral de graduados.
+
+https://ole.mineducacion.gov.co
+
+La extracción será realizada mediante bibliotecas como 
+Requests
+, Pandas, 
+Sodapy
+ (API 
+Socrata
+) y procesos automatizados desarrollados en Python.
+
+
+
+🔹 
+Transform
+ — ¿Cómo preparan los datos?
+
+☑ Limpieza de datos (duplicados e inconsistencias)
+
+☑ Tratamiento de valores faltantes
+
+☑ Integración de múltiples fuentes
+
+☑ Conversión de variables categóricas
+
+☑ Normalización y escalamiento
+
+☑ Ingeniería de características (
+Feature
+ 
+Engineering
+)
+
+☑ Selección automática de variables
+
+☑ Reducción de dimensionalidad (PCA, UMAP)
+
+☑ Detección de valores atípicos
+
+
+
+
+
+
+
+✍️ Describe:
+
+Durante esta etapa se consolidarán los datos provenientes de las diferentes entidades gubernamentales, eliminando inconsistencias y registros duplicados. Posteriormente se aplicarán procesos de normalización, codificación de variables categóricas, imputación de datos faltantes e ingeniería de características para construir un dataset robusto que represente adecuadamente las condiciones académicas, laborales, demográficas y socioeconómicas de cada programa académico. Finalmente, se aplicarán técnicas de selección automática de variables y reducción de dimensionalidad para optimizar el desempeño de los modelos de Machine 
+Learning
+.
+
+
+
+🔹 Load — ¿Cómo dejan los datos listos?
+
+☑ Dataset estructurado para Machine 
+Learning
+
+
+☑ Repositorio analítico integrado
+
+☑ Base de datos para visualización
+
+☑ 
+Dashboards
+ interactivos
+
+☑ Modelos entrenados
+
+✍️ Resultado esperado:
+
+El resultado será un repositorio analítico institucional que almacenará los datos preparados para el entrenamiento de modelos de Machine 
+Learning
+, acompañado de los modelos optimizados seleccionados automáticamente mediante 
+PyCaret
+ y FLAML. La plataforma desarrollada en 
+Streamlit
+ consumirá dichos modelos para generar predicciones, segmentaciones y recomendaciones prescriptivas orientadas a fortalecer la permanencia estudiantil, optimizar la pertinencia curricular y apoyar los procesos de Registro Calificado y Acreditación.
+
+
+
+🧠 Nota clave
+
+Los datos son el activo estratégico del proyecto.
+
+Datos de alta calidad permiten construir modelos más precisos, interpretables y confiables. 
+
+La integración de múltiples fuentes oficiales incrementa la capacidad predictiva y analítica del 
+framework
+. 
+
+La actualización automática mediante 
+APIs
+ garantiza información vigente para apoyar la toma de decisiones basada en evidencia. 
+
+
+
+🔍 ANÁLISIS EXPLORATORIO DE DATOS (EDA)
+
+¿Qué harías antes de aplicar los modelos?
+
+☑ Limpieza de datos
+
+☑ Tratamiento de valores faltantes
+
+☑ Integración de fuentes
+
+☑ Visualización interactiva
+
+☑ Análisis descriptivo
+
+☑ Correlación entre variables
+
+☑ Identificación de valores atípicos
+
+☑ Balance de variables objetivo
+
+☑ Reducción de dimensionalidad
+
+☑ Segmentación preliminar
+
+✍️ Describe:
+
+El Análisis Exploratorio de Datos (EDA) permitirá comprender el comportamiento de los indicadores académicos, institucionales y socioeconómicos antes del entrenamiento de los modelos. Se evaluará la distribución de las variables, la calidad de los datos, las correlaciones entre indicadores de permanencia, deserción, empleabilidad y pertinencia curricular, así como la presencia de valores atípicos y posibles sesgos. También se analizará la evolución histórica de los programas académicos, la relación entre variables institucionales y territoriales, y la formación de clústeres mediante técnicas de aprendizaje no supervisado para identificar perfiles similares entre programas e Instituciones de Educación Superior.
+
+Como apoyo al análisis se generarán histogramas, diagramas de caja, mapas de calor de correlación, matrices de dispersión, análisis geoespacial, visualizaciones temporales y representaciones bidimensionales obtenidas mediante PCA y UMAP. Estos resultados servirán como insumo para la selección automática de variables, la comparación de algoritmos mediante 
+PyCaret
+ y FLAML y la construcción del componente de analítica prescriptiva del 
+framework
+.
+
+Desafíos (Nivel Estratégico)
+
+• Calidad de datos • Acceso • Integración • Sesgo
+
+Matriz DOFA — Gestión de Datos en Proyectos de Inteligencia Artificial
+
+Factor
+
+Fortalezas (Interno +)
+
+Oportunidades (Externo +)
+
+Debilidades (Interno -)
+
+Amenazas (Externo -)
+
+Calidad de los datos
+
+Integración de múltiples fuentes oficiales (SNIES, DANE, OLE y Datos Abiertos), lo que mejora la confiabilidad y representatividad de la información utilizada para el entrenamiento de los modelos.
+
+Incorporar nuevas fuentes de Datos Abiertos y actualizar automáticamente la información mediante 
+APIs
+ para mejorar continuamente la precisión del 
+framework
+.
+
+Diferencias en la estructura, periodicidad y calidad de los datos provenientes de distintas entidades pueden requerir procesos adicionales de depuración y homologación.
+
+Cambios en la disponibilidad, actualización o estructura de los conjuntos de datos oficiales pueden afectar la continuidad y reproducibilidad de los modelos.
+
+Acceso a la información
+
+Disponibilidad de datos públicos y reutilizables que facilitan el desarrollo de soluciones basadas en evidencia para las Instituciones de Educación Superior.
+
+Fortalecer la interoperabilidad entre plataformas gubernamentales mediante servicios API y promover una cultura de datos abiertos para la transformación digital de las IES.
+
+Algunas fuentes presentan limitaciones de acceso, diferencias en los formatos o restricciones de consulta que pueden afectar la automatización del proceso ETL.
+
+Cambios en las políticas de acceso, límites de consumo de 
+APIs
+ o indisponibilidad temporal de los servicios podrían afectar el funcionamiento del 
+framework
+.
+
+Integración de datos
+
+Arquitectura ETL automatizada que consolida información académica, laboral, demográfica y territorial en un repositorio analítico único.
+
+Escalar el 
+framework
+ incorporando nuevas fuentes de información como sistemas institucionales, observatorios regionales y plataformas de analítica educativa.
+
+La heterogeneidad de formatos, catálogos de datos y estructuras semánticas incrementa la complejidad del proceso de integración y transformación.
+
+Cambios tecnológicos, incompatibilidades entre plataformas o modificaciones en los esquemas de datos pueden afectar la interoperabilidad del sistema.
+
+Sesgo y ética en IA
+
+Utilización de múltiples algoritmos de Machine 
+Learning
+ y técnicas de validación cruzada que favorecen modelos más robustos, interpretables y generalizables.
+
+Incorporar mecanismos de Inteligencia Artificial Explicable (XAI), auditoría algorítmica y monitoreo continuo para fortalecer la transparencia y la confianza en los resultados.
+
+Posibles sesgos derivados de información histórica, desbalance entre programas académicos o diferencias regionales que pueden influir en las predicciones.
+
+Decisiones institucionales basadas exclusivamente en modelos automatizados, sin validación por expertos, podrían generar interpretaciones inadecuadas o afectar la equidad en la toma de decisiones.
+
+
+
+4. Objetivos SMART — Diseño del Proyecto de Inteligencia Artificial
+
+🎯 Objetivo General
+
+Diseñar e implementar un Framework de Machine 
+Learning
+ 
+Multimodelo
+ basado en Datos Abiertos, SNIES y analítica predictiva-prescriptiva que apoye a las Instituciones de Educación Superior colombianas en la optimización de la permanencia estudiantil y la evaluación de la pertinencia curricular mediante modelos inteligentes para la toma de decisiones basada en evidencia.
+
+Objetivo General SMART
+
+Diseñar, desarrollar e implementar durante el ciclo del proyecto un Framework de Machine 
+Learning
+ 
+Multimodelo
+ que integre datos provenientes del SNIES, DANE, Observatorio Laboral para la Educación (OLE) y el Portal Nacional de Datos Abiertos, utilizando técnicas de aprendizaje supervisado, no supervisado y 
+AutoML
+ para predecir la tasa de deserción, estimar el Índice de Pertinencia Curricular y generar recomendaciones prescriptivas visualizadas mediante una plataforma interactiva desarrollada en 
+Streamlit
+, fortaleciendo los procesos de planeación, aseguramiento de la calidad y toma de decisiones estratégicas en las Instituciones de Educación Superior colombianas.
+
+
+
+✅ Objetivos Específicos
+
+1. Problema (10 min)
+
+Definir claramente el problema y las variables objetivo del proyecto.
+
+Problema:
+
+Las Instituciones de Educación Superior disponen de grandes volúmenes de información provenientes de diversas fuentes oficiales; sin embargo, estos datos se encuentran dispersos y con un bajo nivel de aprovechamiento para apoyar la toma de decisiones estratégicas. El proyecto busca integrar dichos datos mediante un Framework de Machine 
+Learning
+ 
+Multimodelo
+ que permita predecir la permanencia estudiantil, evaluar la pertinencia curricular y generar recomendaciones prescriptivas orientadas al fortalecimiento institucional y al aseguramiento de la calidad.
+
+
+
+2. Modelo de Machine 
+Learning
+ (10 min)
+
+Seleccionar la estrategia metodológica más adecuada para cada tipo de problema.
+
+El 
+framework
+ implementará un enfoque híbrido de Inteligencia Artificial que combina:
+
+Aprendizaje Supervisado para la predicción de la deserción estudiantil y la estimación del Índice de Pertinencia Curricular.
+
+Aprendizaje No Supervisado para descubrir patrones, segmentar programas académicos e identificar perfiles institucionales similares.
+
+
+AutoML
+ mediante 
+PyCaret
+ y FLAML para comparar automáticamente múltiples algoritmos, optimizar 
+hiperparámetros
+ y seleccionar el modelo con mejor desempeño.
+
+Analítica Prescriptiva para transformar las predicciones en recomendaciones orientadas a la toma de decisiones.
+
+
+
+3. Datos (5 min)
+
+Definir qué datos se requieren y cuáles serán sus fuentes.
+
+Datos:
+
+El 
+framework
+ integrará información académica, institucional, laboral, socioeconómica, demográfica y territorial proveniente del SNIES, DANE, Observatorio Laboral para la Educación (OLE) y el Portal Nacional de Datos Abiertos mediante 
+APIs
+ REST y procesos ETL automatizados. Los datos consolidados constituirán un repositorio analítico utilizado para entrenar, validar y desplegar los modelos de Machine 
+Learning
+.
+
+
+
+4. Riesgos (5 min)
+
+Identificar los principales riesgos del proyecto y sus estrategias de mitigación.
+
+Riesgos identificados:
+
+Variabilidad en la calidad y actualización de los datos abiertos.
+
+Dependencia de la disponibilidad de servicios API externos.
+
+Sesgos derivados de información histórica o desbalance de datos.
+
+Cambios en las estructuras de los conjuntos de datos oficiales.
+
+Riesgo de sobreajuste en algunos modelos de Machine 
+Learning
+.
+
+Interpretación inadecuada de los resultados si no existe validación por expertos.
+
+Estrategias de mitigación:
+
+Implementación de procesos automáticos de validación y control de calidad de datos.
+
+Actualización periódica del repositorio analítico mediante ETL automatizados.
+
+Comparación de múltiples algoritmos utilizando 
+AutoML
+.
+
+Validación cruzada y monitoreo continuo del desempeño de los modelos.
+
+Incorporación de técnicas de Inteligencia Artificial Explicable (XAI) para mejorar la transparencia y trazabilidad de las recomendaciones.
+
+Participación de expertos académicos en la validación de los resultados antes de su utilización en procesos institucionales.
+
+
+
+5. Presentación (5 min)
+
+Explicar la propuesta de forma clara, comprensible y orientada al impacto.
+
+Presentación:
+
+El Framework de Machine 
+Learning
+ 
+Multimodelo
+ transforma grandes volúmenes de Datos Abiertos en inteligencia institucional para apoyar la toma de decisiones en las Instituciones de Educación Superior colombianas. Mediante la integración automática de información proveniente del SNIES, DANE, OLE y el Portal Nacional de Datos Abiertos, el sistema predice la deserción estudiantil, evalúa la pertinencia curricular, identifica patrones ocultos y genera recomendaciones prescriptivas que fortalecen la permanencia estudiantil, optimizan los procesos de aseguramiento de la calidad y apoyan la formulación de estrategias académicas basadas en evidencia. La plataforma desarrollada en 
+Streamlit
+ permitirá visualizar los resultados de forma interactiva, facilitando el análisis oportuno por parte de directivos, analistas institucionales y responsables de la planeación estratégica.
+
+
+
+5. La dimensión ética del proyecto
+
+Reflexionen sobre cada uno de los siguientes aspectos éticos.
+
+Marca
+
+Consideración ética
+
+¿Cómo lo abordarían?
+
+¿Aplica?
+
+[X]
+
+Privacidad y protección de datos
+
+El 
+framework
+ utilizará exclusivamente información pública proveniente de Datos Abiertos y fuentes oficiales (SNIES, DANE y OLE). En caso de incorporar información institucional o de estudiantes, se aplicarán procesos de anonimización, minimización de datos y cumplimiento de la normativa colombiana sobre protección de datos personales (Ley 1581 de 2012), garantizando que ninguna predicción permita identificar personas naturales.
+
+Sí
+
+[X]
+
+Sesgo en los datos o poblaciones subrepresentadas
+
+Se evaluará la representatividad de los datos por región, área del conocimiento, modalidad académica y tipología institucional para evitar sesgos derivados de información histórica o desbalance entre programas académicos. Se implementarán técnicas de validación cruzada, balanceo de datos y comparación de múltiples algoritmos mediante 
+AutoML
+ para reducir sesgos y mejorar la capacidad de generalización del 
+framework
+.
+
+Sí
+
+[X]
+
+Transparencia y 
+explicabilidad
+ del modelo
+
+Las predicciones estarán acompañadas por indicadores de confianza y técnicas de Inteligencia Artificial Explicable (XAI), mostrando las variables con mayor influencia en cada recomendación, tales como matrícula, permanencia, empleabilidad, indicadores socioeconómicos y pertinencia curricular. Esto permitirá comprender cómo el modelo llega a sus resultados y fortalecerá la confianza de los usuarios.
+
+Sí
+
+[X]
+
+Riesgo de estigmatización institucional
+
+El sistema evitará clasificar instituciones o programas académicos como "buenos" o "malos". Los resultados serán presentados como indicadores de apoyo para la toma de decisiones, identificando oportunidades de mejora y recomendaciones prescriptivas sin generar juicios de valor que puedan afectar la reputación institucional.
+
+Sí
+
+[X]
+
+Supervisión humana y toma de decisiones
+
+El 
+framework
+ funcionará como un sistema de apoyo a la decisión. Las recomendaciones generadas por los modelos deberán ser interpretadas y validadas por directivos, analistas institucionales, comités curriculares y responsables del aseguramiento de la calidad antes de definir acciones estratégicas. La decisión final siempre será responsabilidad del talento humano.
+
+Sí
+
+
+
+Parte 2 — Guía para el Elevator Pitch (5 minutos por grupo)
+
+Minuto 0 – 1 | Problema
+
+Actualmente, las Instituciones de Educación Superior cuentan con grandes volúmenes de información provenientes del SNIES, DANE, Observatorio Laboral para la Educación y el Portal Nacional de Datos Abiertos. Sin embargo, estos datos permanecen dispersos y con un bajo nivel de aprovechamiento para apoyar la toma de decisiones estratégicas relacionadas con la permanencia estudiantil, la deserción y la pertinencia curricular. Esta situación limita la capacidad institucional para anticipar riesgos y diseñar estrategias basadas en evidencia.
+
+
+
+Minuto 1 – 2 | Solución
+
+Nuestra propuesta consiste en desarrollar un Framework de Machine 
+Learning
+ 
+Multimodelo
+ basado en Datos Abiertos, capaz de integrar automáticamente información proveniente de diferentes fuentes oficiales mediante 
+APIs
+ REST y procesos ETL. El 
+framework
+ combina técnicas de aprendizaje supervisado, aprendizaje no supervisado y 
+AutoML
+ mediante 
+PyCaret
+ y FLAML para comparar múltiples algoritmos, seleccionar el modelo con mejor desempeño y generar analítica predictiva y prescriptiva orientada al fortalecimiento de la permanencia estudiantil y la pertinencia curricular.
+
+
+
+Minuto 2 – 3 | Datos
+
+El proyecto consume información oficial proveniente del SNIES, DANE, Observatorio Laboral para la Educación (OLE) y el Portal Nacional de Datos Abiertos, integrando indicadores académicos, institucionales, laborales, socioeconómicos, demográficos y territoriales. Estos datos son procesados mediante una arquitectura ETL automatizada que consolida un repositorio analítico para entrenar y validar modelos de Machine 
+Learning
+, garantizando información actualizada, reproducible y escalable.
+
+
+
+Minuto 3 – 4 | Ética
+
+El 
+framework
+ incorpora principios de Inteligencia Artificial 
+Responsable
+ mediante la protección de datos, el uso de información anonimizada cuando sea necesario, la identificación y mitigación de sesgos, la aplicación de técnicas de Inteligencia Artificial Explicable (XAI) y la supervisión humana durante todo el proceso de toma de decisiones. El sistema no reemplaza a los expertos institucionales; por el contrario, proporciona evidencia analítica para apoyar decisiones más objetivas, transparentes y fundamentadas.
+
+
+
+Minuto 4 – 5 | Impacto
+
+El Framework de Machine 
+Learning
+ 
+Multimodelo
+ transforma los Datos Abiertos en inteligencia institucional para fortalecer la educación superior colombiana. La plataforma permitirá anticipar riesgos de deserción, evaluar la pertinencia curricular, descubrir patrones mediante aprendizaje no supervisado y generar recomendaciones prescriptivas que apoyen la planeación estratégica, la actualización de 
+microcurrículos
+, la formulación de Documentos Maestros y los procesos de Registro Calificado y Acreditación. De esta manera, las Instituciones de Educación Superior podrán tomar decisiones oportunas, basadas en evidencia y orientadas al mejoramiento continuo, incrementando su capacidad de respuesta frente a las necesidades del entorno social, académico y productivo.
+
+
+
+
+
+
+
+Rubrica de evaluación entre pares
+
+Cada participante usa esta rúbrica para evaluar las presentaciones de OTROS grupos. El docente la usa para la evaluación final.
+
+
+
+Grupo evaluado: _________________________________   Evaluado por: _________________________________
+
+
+Criterio
+Excelente (3 
+pts
+)
+Bueno (2 
+pts
+)
+En desarrollo (1 pt)
+
+
+Ptos
+
+1. Pertinencia del problema
+El problema es real, especifico y claramente relevante para la educación
+El problema es relevante, pero algo vago o general
+El problema no está claramente definido o no es educativo
+
+/ 3
+2. Justificación técnica
+Explican correctamente 
+por que
+ esa arquitectura es la adecuada para ese tipo de datos
+Mencionan la arquitectura correcta pero la justificación es superficial
+La arquitectura elegida no corresponde al problema o no hay justificación
+
+/ 3
+3. Consideración ética
+Identifican al menos dos riesgos concretos y proponen medidas específicas para mitigarlos
+Identifican un riesgo, pero la propuesta de mitigación es genérica
+No identifican riesgos éticos o la reflexión es muy superficial
+
+/ 2
+
+4. Enlace a GitHub
+
+Carga exitosa. 
+
+Carga parcial
+
+Carga 
+semi-parcial
+ 
+
+/ 2
+
+TOTAL:
+
+/ 10
+
+
+
+
+
+✍️ Análisis del equipo
+
+¿Cuál es el mayor desafío en su proyecto?
+
+
+
+
+
+
+
+¿Cómo lo mitigarían estratégicamente?
+
+
+
+
+
+
+
+
+
+
+Bibliografía
+
+
+
+Alamo, E. M.-C. (2024). Análisis de estrategias innovadoras para retención estudiantil con inteligencia artificial: una perspectiva multidisciplinaria. 
+European
+ Public &amp; Social 
+Innovation
+ 
+Review
+, 9, 1–20. https://doi.org/10.31637/epsir-2024-440 
+
+Cardona, J. a. S., &amp; Arbelaez, J. I. T. (2019). Aplicación de 
+Learning
+ 
+Analytics
+ y 
+Educational
+ Data 
+Mining
+ en una institución de educación superior en Colombia. Revista Ingenierías Universidad De Medellín, 19(36), 71–89. https://doi.org/10.22395/rium.v19n36a4 +
+
+Leones Zambrano, P., Fernández Sánchez, L., Macias Bazurto, L., &amp; Macias Bazurto, G. (2026). Sistema inteligente para la construcción y optimización de mallas curriculares en educación superior basado en análisis comparativo y aprendizaje automático: 
+Intelligent
+ 
+system
+ 
+for
+ 
+the
+ 
+construction
+ and 
+optimization
+ 
+of
+ curricular 
+meshes
+ in 
+higher
+ 
+education
+ 
+based
+ 
+on
+ comparative 
+analysis
+ and machine 
+learning
+. LATAM Revista Latinoamericana De Ciencias Sociales Y Humanidades, 7(2), 614 – 627. https://doi.org/10.56712/latam.v7i2.5656 
+
+
+
+Fuentes del proyecto y bibliografía técnica:
+
+1. Guzmán Pérez, F. A. Proyecto Stellarium: IA y ML para la Observación Astronómica. Repositorio local del proyecto, 2026.
+
+2. Scikit-learn Developers. RandomForestClassifier y métricas de clasificación. Documentación oficial de scikit-learn.
+
+3. Rhodes, B. Skyfield: High precision research-grade positions for planets and Earth satellites. Documentación oficial.
+
+4. Astropy Collaboration. Astropy: A community Python package for astronomy. Documentación oficial.
+
+5. OpenWeather. Weather API documentation para variables meteorológicas horarias.
+
+6. NASA/JPL. Development Ephemeris DE421 para posiciones planetarias.
+
+7. CRISP-ML(Q): metodología de calidad para proyectos de Machine 
+Learning
+.
+
+
+
+ANEXO 1: ENLACES A DATASETS REPRESENTATIVOS.
+
+Nombre del dataset
+
+Descripción
+
+Variables principales
+
+Enlace
+
+SNIES - Bases consolidadas
+
+Base oficial del SNIES con información histórica de estudiantes, docentes, administrativos e instituciones de educación superior en Colombia. 
+snies.mineducacion
++1
+
+Código SNIES, institución, programa, estudiante, docente, periodo, municipio, estado académico, matrícula, graduación, deserción. 
+snies.mineducacion
++1
+
+Bases consolidadas - SNIES 
+
+snies.mineducacion
+
+
+
+SNIES - Estadísticas
+
+Portal de estadísticas con acceso a consultas e informes sobre educación superior en Colombia. 
+snies.mineducacion
++1
+
+Indicadores de cobertura, matrícula, programas, instituciones, perfiles territoriales y series históricas. 
+snies.mineducacion
++1
+
+ESTADÍSTICAS - SNIES 
+
+snies.mineducacion
+
+
+
+SNIES - Portal principal
+
+Portal institucional del SNIES con acceso a consulta de programas, estadísticas, mapas, tableros y datos abiertos. 
+
+snies.mineducacion
+
+
+
+Oferta académica, tableros, mapas, reportes, datos abiertos. 
+
+snies.mineducacion
+
+
+
+SNIES - Ministerio de Educación Nacional 
+
+snies.mineducacion
+
+
+
+Datos Abiertos Colombia - CSV recurso 1
+
+Archivo CSV público de Datos Abiertos Colombia útil para variables 
+socio-laborales
+ o administrativas. datos.gov
+
+Depende del recurso; típicamente municipio, año, indicador, valor, sector. datos.gov
+
+CSV recurso datos.gov
+
+Datos Abiertos Colombia - CSV recurso 2
+
+Archivo CSV descargable de Datos Abiertos Colombia para enriquecer variables contextuales. datos.gov
+
+Depende del conjunto; puede incluir territorio, periodo, indicador, valor. datos.gov
+
+CSV descarga datos.gov
+
+Datos Abiertos Colombia - CSV recurso 3
+
+Otro archivo CSV público de Datos Abiertos Colombia. datos.gov
+
+Depende del conjunto; útil para cruces contextuales y socioeconómicos. datos.gov
+
+CSV descarga datos.gov
+
+Oferta Programa Académico Colombia SNIES - 
+Kaggle
+
+
+Dataset de 
+Kaggle
+ con oferta académica colombiana basada en SNIES; sirve para exploración rápida y prototipos. 
+kaggle
+
+
+Código SNIES, programa, institución, nivel, modalidad, ubicación, periodo. 
+kaggle
+
+
+
+Kaggle
+ - Oferta Programa Académico Colombia SNIES 
+kaggle
+
+
+
+Predict
+ 
+students
+' 
+dropout
+ and 
+academic
+ 
+success
+ - 
+Kaggle
+
+
+Dataset de educación superior para predecir deserción y éxito académico, útil como 
+benchmark
+. 
+kaggle
+
+
+Factores sociales, económicos, académicos, rendimiento, etiqueta 
+dropout
+/
+success
+. 
+kaggle
+
+
+
+Kaggle
+ - 
+Predict
+ 
+students
+' 
+dropout
+ and 
+academic
+ 
+success
+ 
+kaggle
+
+
+
+Kaggle
+ - 
+Datasets
+
+
+Buscador general de 
+datasets
+ en 
+Kaggle
+ para educación y analítica predictiva. kaggle+1
+
+Miles de 
+datasets
+ con filtros por tema, formato y popularidad. kaggle+1
+
+
+Kaggle
+ 
+Datasets
+ 
+
+
+

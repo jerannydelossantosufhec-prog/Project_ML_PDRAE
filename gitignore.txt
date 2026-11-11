@@ -1,0 +1,8 @@
+# Archivos temporales y de construcción
+docx_build/
+*.ps1
+*_text.txt
+*.pyc
+__pycache__/
+.ipynb_checkpoints/
+

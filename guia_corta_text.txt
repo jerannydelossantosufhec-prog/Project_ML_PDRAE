@@ -1,0 +1,421 @@
+
+
+
+PROYECTO FINAL – MACHINE LEARNING
+
+Del documento técnico al prototipo inteligente
+
+Maestría en IA, Educación e Investigación | Curso: Machine Learning
+
+
+Versión corta para publicar en Teams
+
+DescripciónEl proyecto final consiste en transformar un documento técnico de investigación en un prototipo funcional de Machine Learning, con apoyo de herramientas de Inteligencia Artificial. Cada estudiante partirá del cuaderno de trabajo guía entregado por el docente y lo adaptará a una problemática propia, preferiblemente relacionada con su tesis, área profesional o interés académico.
+
+
+
+
+¿Qué debe desarrollar?
+
+
+Documento técnico diligenciado a partir de la guía: problema, objetivos, metodología, datos, modelos, resultados y referencias.
+
+
+Cuaderno de trabajo Jupyter Notebook (.ipynb) funcional, con análisis de datos y aplicación de los modelos estudiados.
+
+
+Aplicación web con landing page que presente el proyecto, sus datos, modelos y resultados; puede construirse con Streamlit u otra herramienta compatible.
+
+
+Documentación técnica en PDF y README del repositorio.
+
+
+Video de presentación generado con herramientas/Skills de IA. El repositorio de referencia Greek se compartirá en la última clase.
+
+
+Repositorio GitHub organizado, con enlace al prototipo desplegado en Streamlit, Netlify u otra plataforma.
+
+
+Entrega
+
+Única entrega en TeamsPublicar únicamente el enlace al repositorio GitHub. Allí deben estar organizados el documento técnico PDF, el notebook, el código, la landing page, el video y los enlaces de despliegue. No se deben adjuntar archivos por separado.
+
+
+
+
+Evaluación
+Se valorará la coherencia del proyecto, el funcionamiento del notebook y la aplicación, el uso pertinente de Machine Learning, las métricas reales, la documentación, el despliegue y la sustentación. Se permite utilizar IA, pero cada estudiante debe comprender y explicar sus decisiones y resultados.
+
+
+Importante
+El ejercicio es práctico y de alcance acotado. El documento modelo entregado contiene un ejemplo desarrollado: deben conservar su estructura como guía, pero reemplazar el tema, los datos, las variables, los modelos y las conclusiones por los de su propio proyecto.
+
+
+PROYECTO FINAL
+
+Prototipado inteligente y despliegue de investigación en Machine Learning
+
+Maestría en IA, Educación e Investigación | Curso: Machine Learning
+
+
+1. Presentación y propósito
+El proyecto final integra las competencias investigativas, analíticas y técnicas desarrolladas en el curso de Machine Learning. El estudiante transformará un documento técnico de investigación en un cuaderno de trabajo ejecutable y, posteriormente, en un prototipo web funcional, documentado y desplegado.
+La actividad se apoya en el documento modelo facilitado por el docente. Este material presenta un ejemplo desarrollado para ilustrar cómo se diligencian sus apartados; no constituye un tema obligatorio ni una solución que deba copiarse. La estructura y el formato son la guía de trabajo. Cada estudiante deberá adaptar el contenido a su propio problema, conjunto de datos y propósito investigativo.
+
+Idea centralDocumento técnico → datos → notebook IPYNB → modelos de Machine Learning → aplicación web → documentación y video → repositorio GitHub con enlaces de acceso.
+
+
+
+
+2. Objetivo general
+Desarrollar y desplegar un prototipo aplicado de Machine Learning a partir de un documento técnico de investigación, integrando preparación y análisis de datos, modelos supervisados y/o no supervisados pertinentes, evaluación mediante métricas, documentación académica y herramientas de Inteligencia Artificial para apoyar la construcción y comunicación del proyecto.
+
+
+3. Selección del tema y de los datos
+El tema puede estar relacionado con la tesis de maestría, una problemática de su campo profesional, otra asignatura o un contexto de interés. Se recomienda elegir un problema concreto que pueda abordarse con un conjunto de datos disponible y un alcance realizable en el tiempo previsto.
+Las fuentes de datos pueden incluir:
+
+
+Repositorios de datos abiertos gubernamentales o institucionales.
+
+
+Kaggle u otras plataformas de conjuntos de datos.
+
+
+Repositorios científicos o bases de datos públicas.
+
+
+Datos propios, siempre que su uso esté autorizado y se proteja la información personal.
+
+Cuidado con los datosIdentifique la fuente, describa las variables y verifique permisos, privacidad y posibles sesgos. No publique datos personales, confidenciales o sensibles.
+
+
+
+
+4. Componentes del proyecto
+
+
+4.1. Documento técnico de investigación
+Diligencie el documento modelo entregado por el docente. Mantenga su organización como guía, pero sustituya el ejemplo por el contenido propio. La extensión debe ser proporcional al problema y al alcance del ejercicio.
+
+
+Título del proyecto.
+
+
+Resumen y palabras clave.
+
+
+Introducción y justificación.
+
+
+Antecedentes y descripción del problema.
+
+
+Pregunta de investigación.
+
+
+Objetivo general y objetivos específicos.
+
+
+Población, contexto o unidad de análisis, cuando aplique.
+
+
+Variable objetivo (target) y variables de entrada (features), si corresponde.
+
+
+Descripción, procedencia y características del conjunto de datos.
+
+
+Estado del arte o referentes pertinentes.
+
+
+Metodología de trabajo y justificación del enfoque de Machine Learning.
+
+
+Preparación y análisis exploratorio de datos.
+
+
+Modelos implementados y procedimiento de evaluación.
+
+
+Resultados, métricas e interpretación.
+
+
+Consideraciones éticas, riesgos y limitaciones.
+
+
+Conclusiones y trabajo futuro.
+
+
+Referencias bibliográficas en formato APA.
+
+Sobre el ejemplo del documentoEl tema ilustrativo del material —permanencia estudiantil, pertinencia curricular y datos SNIES— sirve para mostrar el nivel de desarrollo esperado. No es obligatorio utilizarlo. Tampoco se deben conservar como propios sus datos, cifras, resultados, fuentes o referencias sin verificarlos y sin que correspondan al proyecto.
+
+
+
+
+4.2. Cuaderno de trabajo Jupyter Notebook (.ipynb)
+El notebook es el núcleo computacional del proyecto. Debe estar organizado por secciones, combinar código con explicaciones breves y permitir seguir el flujo desde los datos hasta los resultados.
+
+
+Contextualización del problema y objetivo analítico.
+
+
+Importación de librerías y configuración del entorno.
+
+
+Carga de datos e identificación de su fuente.
+
+
+Exploración inicial: dimensiones, tipos de variables y calidad.
+
+
+Limpieza y preparación: faltantes, duplicados, codificación o escalamiento cuando aplique.
+
+
+Análisis exploratorio y visualizaciones pertinentes.
+
+
+Definición de variables de entrada y objetivo, cuando aplique.
+
+
+Separación de datos y prevención de fuga de información (data leakage).
+
+
+Entrenamiento del modelo o modelos seleccionados.
+
+
+Evaluación con métricas apropiadas.
+
+
+Interpretación de los resultados y limitaciones.
+
+
+Conclusiones técnicas.
+El notebook debe ser funcional y mostrar resultados reales de su ejecución. Si se utilizan datos externos, incluya instrucciones claras para obtenerlos. Cuando sea posible, evite depender de rutas locales que solo existan en su computador.
+
+
+4.3. Aplicación web y landing page
+Con base en el documento técnico y el notebook, construya una aplicación que explique el proyecto y permita explorar o probar su funcionamiento. Streamlit es la alternativa recomendada para publicar una aplicación de Machine Learning; también pueden emplearse otras herramientas compatibles.
+
+
+Elementos mínimos
+
+
+Landing page: nombre del proyecto, problema, propósito, datos, metodología y utilidad.
+
+
+Vista del análisis: visualizaciones y descripción de los datos.
+
+
+Vista del modelo: algoritmo(s) utilizados y resultados de evaluación.
+
+
+Interacción significativa: predicción con entradas del usuario, exploración de segmentos, consulta de indicadores u otra funcionalidad coherente.
+
+
+Resultados: métricas e interpretación; no mostrar cifras inventadas.
+
+
+Documentación: acceso al PDF, notebook o secciones explicativas.
+La interfaz debe ser comprensible, organizada y consistente con el objetivo del proyecto. No se exige un diseño complejo: se prioriza que funcione, explique y permita verificar el ejercicio.
+
+
+4.4. Modelos de Machine Learning
+Seleccione los modelos estudiados en clase que respondan a la pregunta planteada. La selección debe justificarse por el tipo de datos y el objetivo del análisis.
+
+
+Aprendizaje supervisado: clasificación o regresión cuando se dispone de una variable objetivo conocida.
+
+
+Aprendizaje no supervisado: agrupamiento, segmentación, reducción de dimensionalidad o detección de patrones cuando no se utiliza una etiqueta objetivo.
+
+
+Puede incluir un enfoque principal y un análisis complementario. No se deben agregar modelos sin una justificación metodológica.
+Si el proyecto requiere ambos enfoques, explique cómo se complementan. Si uno de ellos no es pertinente, justifique la decisión en el documento técnico.
+
+
+Métricas
+Utilice métricas acordes con la tarea: por ejemplo, Accuracy, Precision, Recall, F1-score o ROC-AUC para clasificación; MAE, RMSE o R² para regresión; y Silhouette Score u otras medidas pertinentes para clustering. No es necesario reportar todas las métricas: seleccione las que permitan evaluar adecuadamente el modelo.
+
+
+4.5. Documentación automatizada con IA
+Se podrán utilizar herramientas generativas y Skills para apoyar la redacción, organización y transformación de los contenidos. La documentación debe basarse en el documento técnico y en los resultados efectivamente obtenidos en el notebook.
+
+
+Generar o ajustar el README con la descripción del proyecto, instrucciones de ejecución y enlaces.
+
+
+Organizar el documento técnico y exportarlo a PDF.
+
+
+Mantener correspondencia entre problema, metodología, modelos, métricas y conclusiones.
+
+
+Revisar referencias, afirmaciones y resultados generados por IA antes de publicarlos.
+
+
+4.6. Video de presentación
+El estudiante elaborará un video breve que comunique el proyecto y sus resultados. Se utilizará la herramienta o Skill de generación de video indicada por el docente. El enlace al repositorio de referencia denominado Greek y las instrucciones se compartirán en la última clase.
+El video debe presentar, de manera clara:
+
+
+Problema y propósito.
+
+
+Datos y fuente.
+
+
+Modelo o modelos aplicados.
+
+
+Resultados principales y métricas.
+
+
+Demostración o explicación de la aplicación.
+
+
+Conclusión e impacto potencial.
+El video puede ser generado con IA, pero debe representar fielmente el proyecto realizado.
+
+
+4.7. Repositorio GitHub y despliegue
+GitHub será el punto central de organización y entrega. El repositorio debe ser accesible para su evaluación y contener, como mínimo:
+
+
+README.md con descripción, instrucciones y enlaces.
+
+
+Notebook funcional (.ipynb).
+
+
+Código fuente de la aplicación.
+
+
+Documento técnico en PDF.
+
+
+Archivos necesarios para ejecutar el proyecto (por ejemplo, requirements.txt, cuando aplique).
+
+
+Video o enlace al video.
+
+
+Enlaces al prototipo desplegado y a la landing page.
+
+Aclaración de despliegueStreamlit Community Cloud es una opción recomendada para publicar aplicaciones Streamlit. Netlify puede utilizarse para landing pages o aplicaciones web compatibles. No se exige desplegar Streamlit directamente en Netlify; puede usar otra plataforma si permite acceder y evaluar el prototipo.
+
+
+
+
+5. Ruta de ejecución sugerida
+
+1. Elegir el problema: Definir una necesidad concreta y su relación con el contexto académico, profesional o investigativo.
+
+2. Diligenciar la guía: Adaptar el documento modelo al tema propio, precisando objetivo, datos, variables y metodología.
+
+3. Construir el notebook: Preparar los datos, ejecutar los modelos y obtener resultados verificables.
+
+4. Desarrollar la aplicación: Crear una landing page y una interfaz que muestre y permita explorar el ejercicio.
+
+5. Generar documentación y video: Apoyarse en las herramientas y Skills indicadas, revisando la fidelidad del contenido.
+
+6. Organizar GitHub: Incluir archivos, instrucciones y enlaces de forma clara.
+
+7. Desplegar y validar: Comprobar que el repositorio, la aplicación y los recursos abran correctamente.
+
+8. Entregar y sustentar: Compartir el enlace único de GitHub en Teams y prepararse para explicar el trabajo.
+
+
+6. Estructura sugerida del repositorio
+proyecto-machine-learning/├── README.md├── documento_tecnico.pdf├── notebook/│   └── proyecto_ml.ipynb├── app/│   ├── streamlit_app.py│   └── requirements.txt├── data/                  # Solo datos permitidos o instrucciones de descarga├── assets/                # Imágenes y recursos de la landing page└── video/    └── enlace_video.txt
+
+
+7. Entrega
+
+Entrega única en TeamsEl estudiante publicará exclusivamente el enlace a su repositorio GitHub. No debe adjuntar por separado el PDF, notebook ni video. El repositorio debe reunir los componentes solicitados y enlazar la aplicación desplegada.
+
+
+Antes de enviar, verifique:
+
+
+☐ El repositorio abre y cuenta con permisos de acceso para evaluación.
+
+
+☐ El notebook está incluido y sus celdas principales se ejecutan.
+
+
+☐ El PDF corresponde al proyecto realizado.
+
+
+☐ La aplicación está publicada y el enlace funciona.
+
+
+☐ La landing page explica el proyecto.
+
+
+☐ El video está disponible.
+
+
+☐ El README orienta al evaluador hacia los recursos.
+
+
+☐ No se incluyeron datos personales, claves, tokens o información confidencial.
+
+
+8. Criterios de evaluación
+
+Criterio
+
+Qué se revisa
+
+Peso
+
+Documento técnico
+
+Coherencia del problema, objetivos, metodología, fuentes y referencias.
+
+20 %
+
+Notebook y Machine Learning
+
+Funcionalidad, preparación de datos, implementación, evaluación e interpretación.
+
+30 %
+
+Aplicación y despliegue
+
+Landing page, interacción, resultados y acceso público funcional.
+
+25 %
+
+Documentación, GitHub y video
+
+Organización, claridad, automatización responsable y comunicación.
+
+15 %
+
+Sustentación
+
+Comprensión del problema, datos, decisiones de modelado y resultados.
+
+10 %
+
+TOTAL
+
+
+
+100 %
+
+
+9. Orientaciones para la sustentación
+La sustentación será breve y se centrará en la demostración y comprensión del proyecto. El estudiante deberá explicar qué problema aborda, de dónde provienen los datos, por qué seleccionó los modelos, qué significan las métricas y cómo funciona la aplicación. También deberá reconocer limitaciones, riesgos o aspectos éticos relevantes.
+El uso de Inteligencia Artificial está permitido como apoyo al desarrollo. No reemplaza la responsabilidad del estudiante de revisar el código, validar la documentación y comprender los resultados.
+
+
+10. Nota final para los estudiantes
+
+RecuerdeEl documento modelo entregado es una guía de estructura y diligenciamiento; el caso incluido es únicamente ilustrativo. Construya un proyecto propio y viable. No se busca una solución extensa o compleja, sino un ejercicio aplicado, funcional, reproducible, documentado y sustentable.
+
+
+
